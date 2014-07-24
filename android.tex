@@ -1,5 +1,4 @@
 %% android.tex
-%% V0.1
 %% by Simon Danner
 
 % The Computer Society requires 12pt.
@@ -40,7 +39,7 @@
 \begin{document}
 
 \title{\paperTitle \\ \paperSubTitle }
-\author{\paperAuthor,~\IEEEmembership{ AI4 }}% <-this % stops a space
+\author{\paperAuthor,~\IEEEmembership{ AI7 }}% <-this % stops a space
 
 % The paper headers
 % \markboth{Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, January~2007}
@@ -49,18 +48,13 @@
 
 \IEEEcompsoctitleabstractindextext{%
 	\begin{abstract}
-		Durch die rasante Entwicklung im Bereich der Webtechnologien wurde die Erstellung
-		und Konzipierung von Websites in den letzten Jahren immer komplexer.
-		Die Seiten sollen mittlerweile nicht nur auf herkömmlichen PCs korrekt dargestellt werden und funktionieren, sondern auch auf mobilen Geräten benutzbar sein.
-		Um die wachsende Komplexität zu beherrschen und es Webentwicklern zu ermöglichen schneller und einfacher zu entwickeln
-		sind wiederverwendbare Vorlagen zumindest eine partielle Lösung.
-		HTML5 Boilerplate versucht moderne Technologien wie HTML5 und CSS3 einfacher verwendbar zu machen, es aber auch zu ermöglichen, dass die erstellten Seiten
-		auch mit älteren Browsern benutzbar bleiben. Es wird eine bewährte Struktur vorgegeben, in die der Entwickler seine Ideen und Code einfach integrieren kann.
+	TODO Abstract
+	
 	\end{abstract}
 
 	% Note that keywords are not normally used for peerreview papers.
 	\begin{IEEEkeywords}
-		Android, Hardware, 
+		Android, Hardware, ADK, ADK 2012, AOA, Bluetooth LE 
 	\end{IEEEkeywords}
 }
 
@@ -68,233 +62,69 @@
 
 \section{Einleitung}
 
-%Der Aufwand eine statische Codeanalyse durchzuführen ist sehr gering da bei diesem Verfahren keine Testfälle spezifiziert werden müssen.
 
-\IEEEPARstart{H}{}tml5 Boilerplate ist ein Projekt, welches Entwicklern von Websites den Einstieg erleichtern soll,
-indem es ihnen eine bewährte Struktur vorgibt (Template) in der Sie ihre Anwendungen integrieren können. Bereits 2005 wurden nach Gibson et al. ca. 40-50 \% aller Websites mit Templates erstellt. Ziel von HTML5 Boilerplate ist es deswegen eine moderne, wiederverwendbare Struktur,
-welche beim Erstellen eines Projektes verwendbar ist vorzugeben. Zusätzlich soll der Einsatz von modernen Technologien wie HTML5 und CSS3 vereinfacht und sichergestellt werden, dass die Website in allen Browsern gleich dargestellt und benutzbar ist.  
+\IEEEPARstart{A}{}ndroid ist 
+TODO Einleitung 
 
-HTML hat sich von einer einfachen Sprache zur Strukturierung von Dokumenten zu einer Technologie in der auch aufwendige Anwendungen umgesetzt werden 
-entwickelt. 
-Während vor einigen Jahren die Entwicklung von HTML ins stocken geriet und XML/XHTML als Hoffnungsträger für das Web galt, ist seit einiger Zeit
-vor allem durch neue Standardisierungsprozesse und der Einführung neuer Funktionen, HTML wieder modern.
 
-An HTML5 wird zur Zeit von zwei Organisationen gearbeitet.
-Nachdem das W3C seit 2000 den damaligen HTML 4.01 Standard nicht mehr erneuert hatte, da es auf XHTML setzte,
-begann die Web Hypertext Application Technology Working Group (WHATWG) 2004 mit der Arbeit an einer neuen Version des Standards.
-Als 2009 klar wurde, dass XHTML von vielen nicht angenommen wurde,
-entschloss sich das W3C zusammen mit der WHATWG an HTML5 zu arbeiten.
-Während das W3C einen Standard unter dem Namen HTML5
-erarbeitet hat, welcher zur Zeit abgeschlossen wird, benannte die
-WHATWG ihren "lebenden HTML5 Standard" in HTML um.
-In diesen sollen in Zukunft immer wieder Neuerungen einfließen.
-Der Standard des W3C gilt nun als Schnappschuss des HTML Standards der WHATWG. \cite{xhtml}
-HTML5 bringt neue Elemente zur Darstellung von Multimediaelementen wie 'audio' und 'video' aber auch semantische Elemente wie 'menu', 'nav', 'article' welche helfen sollen Dokumente besser zu strukturieren.
- 
-% \absatz
+
+
 
 
 % Datum
 \hfill{\the\day~\Monat, \the\year  }
 
 \section{Allgemeines}
-HTML5 Boilerplate selbst ist als eine Art Metaprojekt zu betrachten, welches versucht gängige Erfolgsmethoden und weitverbreitete Bibliotheken einzubinden und einfach verwendbar zu machen.
-Dabei soll es ermöglicht werden neue Technologien wie HTML5 und CSS3 zu verwenden.
+TODO Nutzen, Entwicklung
 
-Zu den eingebauten Projekten gehören jQuery, Normalize.css und Modernizr.js.
-HTML5 Boilerplate wird seit 2010 öffentlich und unter MIT Lizenz \cite{MIT} entwickelt. Gestartet  wurde das Projekt von Paul Irish (jQuery Teammember
-, arbeitet bei Google als Chrome Developer Advocate), mit dem Ziel eine Grundstruktur anzubieten,
-auf der schnell moderne Webanwendungen entwickelt werden können. In der Anfangszeit des Projektes gab es noch viele Änderungen.
-Heute sind die Änderungen meist eher kleinere Fehlerbehebungen sowie Updates der Unterprojekte. 
+\section{Anbindungsmöglichkeiten}
 
 
-\section{Verwendung}
-Um HTML5 Boilerplate zu verwenden, wird mit den entpackten Daten begonnen, welche von der offiziellen HTML5 Boilerplate Seite bezogen werden können.\cite{boiler}
-Die entpackte Datei enthält bereits alle von HTML5 Boilerplate zu Verfügung gestellten Dateien.
-Es werden drei Ordner vorgegeben. Der “img” Ordner, sollte alle Bilder des Projekts beinhalten, der “js” Ordner alle Javascript Dateien
-und der “css” Ordner alle Stylesheets. Im “doc” Ordner liegen im Markdown Format\cite{markdown} Dokumentationsdateien, welche die einzelnen Bestandteile von HTML5 Boilerplate beschreiben.
-\\ Außerdem gibt es in diversen Größen Platzhalterbilder, welche durch das Projektlogo ersetzt werden sollten.
-Diese dienen als Favicon( Icon der Website, welches im Browser z. B. in der Favoritenleiste dargestellt wird).
-Die Bilder, deren Dateinamen mit “apple-touch” beginnen, werden von Iphones und Android Smartphones dargestellt, falls die Website als “App” auf dem Homescreen verlinkt wird.
+\section{ADB}
+\subsection{Geschichte}
+
+TODO wann von wem zur Device kommunikation ?? --> IOIO
 
 
-\section{Aufbau}
+\section{AOA / OpenAccessory}
 
-Um den Wert von HTML5 Boilerplate für Entwickler zu erkennen, hilft es die wichtigsten Abschnitte der Haupt- und Beispielsdatei „index.html“\cite{index} zu analysieren. 
-Sie dient als Vorlage, um zu zeigen wie die von HTML5 Boilerplate inkludierten Bibliotheken und CSS-Dateien eingebunden werden sollten,
-um das ganze Potential von HTML5 Boilerplate auszunutzen.
+TODO Aufgabe / Nutzen / Ziel
+TODO Geschichte
+TODO Versionen kurz
+
+\subsection{ADK}
+
+TODO Protokoll
+TODO Beispiele
+\subsection{ADK 2012}
+\subsubsection{Änderungen}
+
+\subsubsection{Audio}
+TODO Audio Use Cases
+
+\section{Bluetooth LE}
+TODO Geschichte
+TODO Nutzen
+TODO Implementierung / Code ??
 
 
-An der ersten Zeile ist erkennbar, dass Boilerplate HTML5 verwendet. In HTML5 wurden die recht komplizierten Doctype-Deklaration früherer 
-HTML Versionen durch diesen einfachen ersetzt. Die nächsten vier Zeilen führen im Internet Explorer dazu, dass das "html"-Element mit CSS Klassen erweitert wird,
-welche dem Entwickler anzeigen, dass der Nutzer Internet Explorer in der jeweiligen Version benutzt.
-Dies ist nötig, da der Browser in älteren Versionen als 9 sehr viele Standards nicht oder falsch umsetzt.\cite{iefx}
-
-Das Wurzel 'html'-Element erhält außerdem die CSS-Klasse 'nojs', welche kennzeichnet, dass kein Javascript ausgeführt werden kann. Wenn Javascript ausgeführt werden kann, wird diese Klasse wieder entfernt.
-Falls dies nicht überschrieben wird, kann davon ausgegangen werden, dass der Browser kein Javascript unterstützt oder die Javascriptunterstützung vom Benutzer abgeschaltet wurde.
-Durch den ersten „meta“ Tag wird festgelegt, dass dieses Dokument in UTF-8 kodiert ist,
-was sinnvoll ist da in dieser Kodierung Zeichen aus allen Sprachen darstgestellt werden können. Dieser Tag steht am Anfang, da der Internet Explorer die Kodierung im ersten Teil der HTML Datei, welche er vom Server empfängt erwartet. Ansonsten wird diese ignoriert. \cite{iebug}
-
-Der Internet Explorer besitzt seit Version 7 die Fähigkeit Websites genauso darzustellen wie mit Version 6. 
-Um dieses oft von ahnungslosen Nutzern durch Einstellungen hervorgerufene Verhalten zu überschreiben wird „IE=edge“ angegeben. Das führt dazu, dass immer die aktuellste Version der Renderingengine verwendet wird.
-Außerdem wird versucht Chromeframe\cite{chrome} zu aktivieren.
-Chromeframe ist ein von Google entwickeltes IE-Plugin, welches die Darstellung von Webseiten im Internet Explorer übernimmt. 
-Chromeframe benutzt dazu eine aktuelle Version von Chrome, was es der Website ermöglicht neue Funktionen zu nutzen. 
-
-Der „viewport“-meta Tag sorgt dafür, dass die Webseite auf mobilen Geräten die gesamte Breite für die Darstellung des Inhaltes nutzt.
+\subsection{NFC TODO}
 
 
 
-Danach werden die erwähnten Stylesheets und Javascript Bibliotheken eingebunden. Beim Einbinden von jQuery vom Google CDN (Content Delivery Network) wird ein weiterer Trick ausgenutzt.
-Durch die Verlinkung ohne Protokoll, sondern mit „//“ vorausgehend der URL wir die Datei immer über das passende Protokoll aufgerufen.
-Wenn die Seite also über das  https Protokoll aufgerufen wird, lädt der Browser automatisch auch jQuery über https.
-Dadurch sind keine Anpassung für Seiten notwendig, welche sowohl über https als auch http erreichbar sind. 
+\section{Ausblick}
+Zukunft TODO
+\subsection{AOA}
 
-Zusätzlich bindet HTML5 Boilerplate Javascriptcode welcher für das Google Analytics Webanalyse Werzeug benötigt wird ein. Im Code muss nur der Google-Useraccount gesetzt werden, danach wird 
-Google Analytics automatisch genutzt. Begründet wird dies mit der enormen Verbreitung des Google Produktes im Web.
-\section{Javascript}
+\subsection{Bluetooth}
+\subsection{andere Techniken}
 
-Boilerplate benutzt zwei bekannte und weitverbreitete Javascript Bibliotheken.
-
-jQuery wird benutzt, da es die Entwicklung von Webapplikationen um einiges erleichtert.
-Modernizr.js wird benutzt um es dem Entwickler einfacher zu machen, neue Features von HTML5 zu verwenden.
-
-Die Skripts liegen im Unterordner “js”.
-In der Datei “plugins.js” sollen alle vom Entwickler zusätzlich benutzten jQuery Plugins eingefügt werden. Durch die Bündelung in einer Datei wird die Ladezeit der Webseite gering gehalten,
-da weniger Dateien heruntergeladen werden müssen. Außerdem beinhaltet die Datei eine Funktion welche sicherstellt,
-dass “log”-Funktionen, mit denen der Entwickler z. B. Debug Informationen aus laufendem Javascript auf der Javascriptconsole ausgeben kann,
-bei Browsern welche keine solche Konsole implementieren keine Fehler produzieren. Dies ist z. B beim Internet Explorer und vielen mobilen Browsern der Fall. 
-
-In dem Unterordner “vendor” sind die von Boilerplate verwendeten Javascript Bibliotheken jQuery und Modernizr abgelegt.
-Bei der Standardversion von Boilerplate handelt es sich dabei um minifizierte Javascriptdateien, welche weniger Speicherplatz benötigen,
-debugging aber so gut wie unmöglich machen. Dies liegt an der Kompression der Variablen und Methodennamen. Entwickler sollten deswegen
-falls es zu Problemen mit dem internem Code der Bibliotheken kommt, diese Dateien während der Entwicklung durch eine nicht minifizierte Version ersetzen.
-
-
-
-In der „index.html“ bindet Boilerplate zuerst die Modernizr Bibliothek ein, da diese möglichst schnell geladen werden sollte,
-damit später ausgeführter und geladener Code auf Modernizr zugreifen kann. Falls anderer, zusätzlicher Code benötigt wird, sollte dieser jedoch am Ende
-der HTML Datei eingebunden werden, um die Ladezeiten gering zu halten.
-
-\subsection{jQuery}
-
-jQuery ist eine Javascript Bibliothek, welche seit 2006 ständig weiterentwickelt wird und mittlerweile die am meist gebrauchte Javascript Bibliothek im Web ist\cite{market}.
-In Boilerplate wird jQuery so eingebunden, dass der Browser zuerst versucht die Bibliothek von Googles CDN zu laden.
-Um festzustellen ob dieses Vorgehen für das eigene Projekt sinnvoll ist, müssten die Ladezeiten von mehreren Orten zwischen dem von Google gehosteten jQuery und der eigenen Version verglichen werden.
-Die vorgegebene Reihenfolge sollte jedoch auf einer Mehrheit von Websites zu schnelleren Ladezeiten führen,
-da dass CDN auf mehrere Standorte verteilt ist. Diese sind im Schnitt besser von dem Großteil der Nutzer erreichbar als der Hauptwebserver auf der die eigene Webanwendung läuft.
-
-jQuery ist offiziell kompatibel mit Chrome, Firefox, Safari und Opera in ihren aktuellen Versionen sowie deren direkten Vorgängerversionen.
-Außerdem wird bei jQuery 1.x, welches von Boilerplate benutzt wird, auch Internet Explorer ab Version 6 unterstützt.
-Ab der aktuellen Version 2.x wird Internet Explorer nur noch ab Version 9 unterstützt, begründet wird dies mit dem zu hohen Entwicklungsaufwand der für ältere Versionen benötigt würde.
-\\
-jQuery wird auf vielen Websiten verwendet, aber auch mit Frameworks wie Microsoft ASP.net oder Wordpress ausgeliefert. 
-\\
-jQuery bietet einen einfacheren Zugriff auf DOM-Elemente (Struktur eines HTML Dokuments wenn es im Browser geladen ist), als dies mit nativen Javascript Befehlen möglich ist.
-Dabei werden CSS-Selektoren verwendet, was den Vorteil hat, dass viele Entwickler bereits mit den verfügbaren Selektoren vertraut sind.
-\\
-Hier zum Vergleich Code, welcher das 'div' Element mit der CSS-Klasse 'maincontent', welches in der Baumstruktur direkt unter dem div mit der ID 'content' liegt, rot färbt.
-Das zweite 'div'-Element, welches nicht unter 'content' liegt, soll nicht geändert werden.
-
-
-
-
-Mit jQuery ist es möglich durch die Verwendung eines CSS-ID-Selektor und einem Klassen-Selektor sehr einfach auf das gewünschte Element zuzugreifen.
-
-
-
-Ohne jQuery muss jedoch mit Hilfe einer Schleife die Kindselemente von "content" durchlaufen und manuell überprüft werden ob
-eines der Kinder die Klasse "maincontent" hat.
-Schon bei solch einfachen Aufgaben wird ersichtlich, welch große Vereinfachungen jQuery mit sich bringt.
-\\
-Eine weitere Funktion ist vereinfachtes Eventhandling. Dies ermöglicht es, Javascript Funktionen ausführen zu lassen, wenn Events durch den Nutzer ausgelöst werden.
-\\
-jQuery ermöglicht es auch einfach Plugins einzubinden, welche entweder selbst erstellt oder von der jQuery-Website\cite{jquery-plugins} bezogen werden können,
-wo eine große Sammlung nützlicher Plugins abrufbar ist. Mit den bereitgestellten Plugins können viele Dinge sehr einfach realisiert werden. Es gibt beispielsweise Plugins zu Darstellung von Kalendern, Menüs und vieles mehr.
-
-\subsection{Modernizr.js}
-Modernizr.js\cite{modern} ist eine Javascript Bibliothek, welche Browser auf die von ihnen implementierten Features abprüft. 
-
-Benötigt wird dies, da die Entwicklung im Web rasant fortschreitet. So werden neue Versionen von Chrome und Firefox ca. alle sechs Wochen veröffentlicht.
-Diese bringen meist neue  Funktionen für Webentwickler mit. Dadurch wird es schwerer Browserunterscheidungen auf Grund der Renderingengine durchzuführen, wie es traditionell üblich war.
-Weil neue Versionen oft die benötigten Funktionen mitbringen und bei Browserunterscheidungen deswegen neue, die Funktionen implementierenden Browser ausgeschlossen werden ist dieser Ansatz suboptimal.
-
-Modernizr.js stellt dazu eine Alternative dar, indem es dem Entwickler ermöglicht auf die fehlenden und vorhandenen Fähigkeiten des Browsers zu reagieren.
-Modernizr führt Überprüfungen nach Fähigkeiten des aufrufenden Browser aus.
-Dadurch wird die Website unabhängig vom User-Agent, und es kann auf tatsächlich unterstütze Funktionen reagiert werden.
-Es wird auf CSS-Eigenschaften, unterstützte HTML Elemente sowie andere HTML5 Features wie Geolocation und Web Sockets geprüft. 
-
-Die Bibliothek selbst ist modular aufgebaut. Dies hat den Vorteil, dass Entwickler nicht die gesamte Bibliothek in ihre Seiten einbinden müssen.
-Es ist möglich zu konfigurieren auf welche Funktionen geprüft wird. Dafür stellt das Modernizr Projekt auf der Homepage einen Wizard bereit,
-mit dem angepasste Varianten automatisiert erstellt werden können.
-Die in Boilerplate verwendete Version, beinhaltet alle unterstützten Erkennungen, weshalb es ratsam sein kann, Modernizr durch eine angepasste Variante zu ersetzen.
-
-Die erkannten vorhandenen Funktionen werden als CSS Klassen an das 'html' -Element des Dokumentes angehängt.
-Dadurch besteht die Möglichkeit sowohl in CSS Dateien als auch in Javascript auf das (nicht-)Vorhanden sein von Funktionen zu reagieren.
-Alternativ können auch über das global verfügbare Modernizr Objekt Abfragen durchgeführt werden.
-
-
-
-Um möglichst schnell die Überprüfungen durchführen zu können, sollte die Bibliothek vor allen anderen Scripts und dem Inhalt der Seite eingebunden werden.
-
-
-\section{CSS}
-CSS, kurz für Cascading Style Sheets, wird genutzt um das Aussehen sowie das Layout von Websites zu definieren. CSS wurde eingeführt um die Präsentation unabhängig
-vom Inhalt gestalten zu können. CSS wird durch das World Wide Web Consortium (W3C) standardisiert. Bei der aktuellen Version CSS3 wurde der Standard in viele einzelne Module aufgeteilt,
-was dazu führt, dass für manche Module bereits Standards im Empfehlungsstatus vorliegen, während andere Standards noch in Entwicklung sind.
-Aktuelle Browser unterstützen schon einige der neuen Funktionen von CSS, wie z .B. Animationen, Übergänge und neue Möglichkeiten Elemente zu selektieren.
-\\
-HTML5 Boilerplate stellt verschiedene CSS Dateien bereit. Im Ordner 'css' befindet sich Normalize.css, welches vom Normalize.css Projekt stammt und die Basis bildet. In der Datei
-'main.css' sollen eigene Regeln eingetragen werden. Außerdem befinden sich in ihr zusätzliche Regeln von HTML5 Boilerplate.
-
-
-
-\subsection{Normalize.css}
-
-Schon seit dem Aufkommen von CSS bestand beim Design von Websites das Problem, dass die unterschiedlichen Browser HTML-Elemente per Voreinstellung unterschiedlich darstellen.
-Dies war im seltesten Fall vom Entwickler gewollt. So wurde bereits 1998 festgestellt, dass es große Unterschiede zwischen den damals am weitesten verbreiteten Browsern
-Internet Explorer und Netscape Navigator gibt. \cite{html_prob}. \\ Seit einigen Jahren sind Versuche von Entwicklern bekannt,
-durch CSS-Regeln eine einheitliche Darstellung zu erreichen. Dabei werden CSS-Regeln erstellt, welche in allen Browsern angewendet werden
-und so zu einem einheitlichem Aussehen führen sollen.
-Durch die große Darstellungsunterschiede und neue Browser wurde die Erstellung solcher Regeln immer komplexer.
-Deshalb gingen viele Entwickler dazu über die CSS-Regeln anderer Entwickler zu verwenden, welche sich lange mit dem Problem beschäftigt hatten.
-Diese Sammlungen an CSS-Regeln nennen sich „Reset-Styles“. 
-
-Normalize.css steht in Tradition dieser Reset Styles und versucht eine universell
-einsetzbare Version zu entwickeln, welche auf allen Browsern funktioniert und auch die neueren HTML5 Elemente unterstüzt. Dies soll dadurch erreicht werden,
-das Normalize.css eine Projektinfrastruktur hat, was dazu führt dass mehrere Entwickler daran arbeiten. Dadurch wird mehr getestet und die Qualität gegenüber einem Ein-Mann Projekt gesteigert. 
-Dies steht im Gegensatz zu früheren  Entwicklungen, wo jeder Entwickler mit seinen eigenen CSS-Reset Regeln arbeitete. Diese Arbeit kann durch die Verwendung von Normalize.css vermieden werden.
-\\
-Als Resultat wird vom Normalize Projekt eine CSS (Cascading Style Sheet) Datei erzeugt, welche dazu führen soll das HTML Elemente per default die gleichen Layout und Design Eigenschaften in allen Browsern besitzen.
-Obwohl HTML und CSS größtenteils standardisiert bzw. im Prozess sind standardisiert zu werden\cite{standarts}\cite{drafts}, werden selbst einfachste Websites in verschiedenen Browsern unterschiedlich dargestellt.
-Dies liegt an unterschiedlichen Voreinstellungen in Browsern sowie Fehlern in einzelnen Versionen von Browsern.
-Um die vielen kleinen Unterschiede festzustellen ist es nötig auch bei standardkonformem Markup und Stylesheets in jedem Browser zu testen.
-Für den Designer stellt Normalize.css eine Erleichterung da, da durch die Regeln das Aussehen von HTML Dokumenten ohne eigene Styles vereinheitlicht wird.
-\\
-Schon bei einfachsten Dokumenten fallen die Unterschiede zwischen den Browsern deutlich auf. Als Demonstration wurde ein Dokument, was eine geordnete Liste beinhaltet erstellt. Abbildung 1 zeigt, die Datei geladen im Internet Explorer 6. Auf der linken Seite ohne die Einbindung von Normalize.css,
-auf der rechten Seite mit Einbindung von Normalize.css. Analog hierzu Abbildung 2, bei der die Datei in Firefox geladen wurde.
-Bei Betrachtung der Darstellung fällt auf, dass große Unterschiede zwischen den Darstellungsweisen der Browser bestehen. Sowohl an der Schrift als auch bei den Abständen ist ein Unterschied deutlich zu erkennen. Auf den Abbildungen wird aber auch die Funktion von Normalize.css ersichtlich. Die rechte Seite, auf der die Dateien mit Normalize geladen wurden, sieht im Internet Explorer und im Firefox identisch aus.
-
-Somit kann nach der Normalisierung des Designs und Layouts von einem gemeinsamen Basisdesign aufgebaut werden.
-
-
-\subsection{main.css}
-In der Datei main.css werden von Boilerplate einige nützliche Funktionen bereitgestellt. Es gibt Regeln, welche das Ausblenden von Elementen ermöglichen ohne dabei Screenreader zu beeinträchtigen.
-Es werden auch anhand einiger Beispiele gezeigt, wie mit Hilfe von Media Queries\cite{media} erreichen kann, dass Websiten auch auf kleinen Bildschirmen gut dargestellt werden.
-Wenn die Druck-Funktion im Browser aufgerufen wird, lädt dieser bestimmte CSS-Regeln, welche es der Webseite ermöglichen bestimmte Elemente dem Drucker gegenüber anders darstellen zu lassen. Dies kann z. B. verwenden werden um Hintergrundbilder oder Farben zu entfernen. HTML5 Boilerplate stellt auch hier einige Beispielsregeln bereit. 
 \section{Fazit}
-HTML5 Boilerplate ist ein nützliches Tool, das schnelles Entwickeln von Webanwendungen die in den gängigen Browsern benutzbar sind ermöglicht.
-Gerade Anfängern wird ein guter Einstieg ermöglicht, da Sie sich an der vorhandenen Struktur orientieren können. 
-Aber auch erfahrene Entwickler werden unterstüzt, indem es unzählige kleine Tricks anwendet, welche in diesem Umfang nur den wenigsten bekannt sein dürften.
-Dadurch wird die Entwicklung von Webanwendungen um einiges erleichtert.
-Auch falls es nicht möglich ist Boilerplate zu verwenden, weil z. B. an einem bereits bestehendem Projekt gearbeitet wird,
-lohnt es sich sicher den Code anzusehen. Teile die benötigt werden können einfach extrahiert und kopiert werden.
-\\
-Durch den einfachen Aufbau ist es sehr leicht sich in dem bereit gestellten Framework zurecht zu finden.
-Anders als bei ähnlichen Projekten, wie z. B. Twitter Bootstrap\cite{bootstrap} müssen keine besonderen Template oder Programmiersprachen gelernt werden, es wird sich auf die aus dem Web bekannten
-Technologien Javascript und jQuery, CSS und HTML beschränkt. Dies ermöglicht es einem breiten Nutzerfeld HTML5 Boilerplate in eigenen Projekten zu verwenden. 
-\\
-Aufgrund der schnellen Entwicklung von 2010 bis 2012 gibt es leider kaum gute aktuelle Dokumentation, so ist z. B. das einzige Buch\cite{buch} welches HTML5 Boilerplate behandelt zum Teil hoffnungslos veraltet. So wird in einem großen Teil des Buches auf Dinge eingegangen die nicht mehr in Boilerplate enthalten sind. Dazu gehören das bis Version 3 enthaltene Buildscript sowie ein Kapitel zur Serverkonfiguration anhand von mittlerweile nicht mehr enthaltenen Beispielskonfigurationen. Das Projekt selbst ist jedoch gut kommentiert, weshalb vieles selbst erklärend sein sollte.
+
+
+
+
+
 
 \bibliographystyle{IEEEtran}
 \bibliography{android_quotes}
