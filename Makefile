@@ -3,6 +3,7 @@ all:
 	bibtex android
 	pdflatex android.tex
 	pdflatex android.tex
+	rm *.log *.out *.blg *.aux *.bbl
 
 .PHONY: clean
 clean:
