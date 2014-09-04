@@ -46,7 +46,7 @@
 
 	% Note that keywords are not normally used for peerreview papers.
 	\begin{IEEEkeywords}
-		Android, Hardware, ADK, ADK 2012, AOA, Bluetooth LE 
+
 	\end{IEEEkeywords}
 }
 
@@ -55,7 +55,7 @@
 \section{Einleitung}
 
 
-\IEEEPARstart{A}{}ndroid ist 
+\,IEEEPARstart{A}{}ndroid ist 
 TODO Einleitung 
 
 \cite{buch}asfd
@@ -69,7 +69,10 @@ TODO Einleitung
 TODO Nutzen, Entwicklung
 
 \section{Anbindungsmöglichkeiten}
-
+Mittlerweile gibt es mehrere Möglichkeiten Hardware an Android Geräte anzubinden. 
+Diese decken ein großes Spektrum an Anwendungsmöglichkeiten ab, wobei jede Vorteile und Nachteile bei bestimmten Anwendungen besitzt.
+Nach ersten experimentellen Ansätzen, hat auch Google die Notwendigkeit externe Geräte anzuschließen
+erkannt und bietet seit 2011 unterschiedliche Möglichkeiten, dies zu realisieren. 
 
 \section{ADB}
 \subsection{Geschichte}
@@ -77,15 +80,22 @@ TODO Nutzen, Entwicklung
 TODO wann von wem zur Device kommunikation ?? --> IOIO
 
 
-\section{AOA / OpenAccessory}
-
+\section{AOA (Android OpenAccessory)}
+Android OpenAccessory ist der Name eines von Google entwickelten Protokols, was 
+dezidiert für die Anbindung von externen Geräten an Android Geräte entwickelt wurde.
+Die erste Version (ADK 2011) wurde im Mai 2011 vorgestellt.
+Das ADK besteht aus einer Hardware Referenz Platform, sowie Source Code für diese, damit 
+Entwickler einfach Hardware und Software anpassen und erweitern können.
 \cite{developaoa}
+\subsection{Ziel}
+Ziel Googles ist es mithilfe des AOA einen einheitlichen Standard zur Verbindung von externen Geräten mit Android Geräten zu etablieren.
+Dies führt dazu, dass Endanwender ohne auf spezille Gerät Kombinationen verwendet zu müssen, externe Hardware kaufen und benutzen können.
+Google veröffentlichte bisher (Stand September 2014), zwei Versionen des ADKs, 2011 und 2012. 
 
-TODO Aufgabe / Nutzen / Ziel
-TODO Geschichte
-TODO Versionen kurz
-
-\subsection{ADK}
+\subsection{ADK 2011}
+Beim ADK 2011 wurde von Google eine
+Referenzplatform auf Basis eines Arduino Mega 2560, welcher ein USB Host TODO enthält, sowie eine Arduino Bibliothek zur Kommunikation mit fähigen Android Geräten veröffentlicht.
+Die Android seitige Funktionalität des AOA wurde in Android 2.3.4 (Release April 2011) und spätere Versionen integriert. 
 
 TODO Protokoll
 TODO Beispiele
@@ -93,9 +103,19 @@ TODO Beispiele
 \subsubsection{Änderungen}
 
 \subsubsection{Audio}
-TODO Audio Use Cases
-
-\section{Bluetooth LE}
+Android unterstützt Entwickler beim einbinden von Audio Geräten. Das Verwalten der Hardware wird von Android komplett übernommen.
+Enwickler von Audio Applikationen können optional über den AudioManager herausfinden, was für Geräte angeschlossen sind. So kann man zum Beispiel die Lautstärke anpassen wenn ein Bluetooth Headset verbunden wird, oder Kopfhörer entfernt werden.
+Da die Verwendung von Audio Geräten fast automatisch abläuft, wird hier nicht weiter auf Audio Geräte eingegangen.
+Historisch gab es einige Entwicklungen die Audioausgabe zur Übermittlung an externe Geräte zu verwenden. Diese sind jedoch in Anbetracht heutiger Möglichkeiten eher als historische Kuriositäten von Bastlern zu sehen.
+Ein Beispiel für ein solches Projekt ist TODO Project HiJack , welches eine Hard- und Software Platform zur Übermittlung von Signalen und Verarbeitung dieser auf Microcontrolern unter iOS sowie Android entwickelte.
+Die Probleme hierbei sind vor allem die analoge Übertragung und die relativ begrenzte Bandbreite.
+\section{Bluetooth}
+\subsection{Bluetooth Low Energy}
+Bluetooth Low Energy, kurz BLE ist seid 2009 optionaler Teil des Bluetooth Standard Version 4.0. 
+Ziel von BLE ist es, den Stromverbrauch mittels darauf optimierter Protokolle und anderer Einschränkungen gegenüber Bluetooth zu veringern.
+In Smartphones wurde BLE in nennenswertem Umfang zuerst von Apple mit iOS 5 ( Oktober 2011)unterstützt.
+Von Android wird Bluetooth LE ab der Version 4.3 (Release Juli 2013) unterstützt.
+BLE ermöglicht es Chips zu entwickeln, die nur dieses Protokoll unterstützen (kein volles Bluetooth TODO), was die Chips für Hardwarehersteller billiger und einfacher zu verwenden macht.
 TODO Geschichte
 TODO Nutzen
 TODO Implementierung / Code ??
