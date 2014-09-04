@@ -8,4 +8,7 @@
 *.toc
 *.pdf
 *.brf
-
+*.swn
+*.swo
+*.swp
+*.bbl
