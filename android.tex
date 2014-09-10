@@ -77,13 +77,14 @@ erkannt und bietet seit 2011 offiziell unterstützte Möglichkeiten, dies zu rea
 
 \section{ADB (Android Debug Bridge)}
 \subsection{Grundlagen}
-Die Android Debug Bridge ist eine Softwaresuite, mit der es möglich ist, von Host PCs mit Android Geräten zu kommunizieren.
-Der Hauptnutzen besteht darin, Android Applikationen im Emulator oder direkt auf echten Geräten zu debuggen.
-Dabei wird auf dem Host ein Server gestartet, welcher die Kommunikation von Host und Endgerät übernimmt. 
-Mit Clients (z.B. dem adb command line tool, oder IDEs wie Android Studio), verbinden sich mit dem Server und senden Befehle an das über USB (oder Wifi)(oder Wifi)  mit dem Server verbundene Endgerät.
+Die Android Debug Bridge ist eine Softwaresuite mit der es möglich ist, von Host PCs mit Android Geräten zu kommunizieren.
+Der Hauptnutzen besteht darin, Android Applikationen in einem virtuellen Gerät (Emulator) oder direkt auf echten Geräten zu debuggen.
+Dabei wird auf dem Host ein Server gestartet, welcher die Kommunikation zwischen Host und Endgerät übernimmt. 
+Die Clients (z.B. dem adb command line tool, oder IDEs wie Android Studio), verbinden sich mit dem Server und senden Befehle an das über USB (oder Wifi) mit dem Server verbundene Endgerät.
 Auf den Endgeräten oder im Emulator läuft im Hintergrund ein Dienst, der die Kommandos vom Server entgegennimmt und antwortet. Die Kommunikation mit dem Server läuft über TCP,
-was es Clients ermöglicht sich über das Netzwerk mit Servern zu verbinden.
-Der ADB Dienst auf Endgeräten, muss meist explizit durch Nutzer aktiviert werden, bevor adb benutzt werden kann. Da adb für das debuggen von Apps, also für Entwickler konzipiert ist, stellt dies im allgemeinen kein Usability Problem dar.
+was es Clients ermöglicht sich über das Netzwerk mit Servern zu verbinden. (Siehe Abbildung \ref{adb})
+Der ADB Dienst auf den Endgeräten muss explizit durch den Nutzer aktiviert werden, bevor er benutzt werden kann.
+Da adb für das debuggen von Apps, also für Softwareentwickler konzipiert ist, stellt dies im allgemeinen kein Usability Problem dar.
 
 \begin{figure}
 	\centering
