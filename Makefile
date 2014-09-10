@@ -1,13 +1,15 @@
 FILE = android.tex
 
+all: android.pdf
+
 android.pdf:    $(FILE)
 	pdflatex $(FILE) 
 	bibtex android
 	pdflatex $(FILE)
 	pdflatex $(FILE)
+	\rm *.aux *.blg *.out *.bbl *.log
 
-all: android.pdf clean
 .PHONY: clean
 clean:
-	\rm *.aux *.blg *.out *.bbl *.log *.idx *.nlo *.toc *.pdf *.brf  *.dvi
+	\rm *.aux *.blg *.out *.bbl *.log *.pdf
 
