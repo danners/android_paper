@@ -76,14 +76,25 @@ Nach ersten experimentellen Ansätzen von Hobbyentwicklern und einzelnen Firmen,
 erkannt und bietet seit 2011 offiziell unterstützte Möglichkeiten, dies zu realisieren. 
 
 \section{ADB (Android Debug Bridge)}
-\subsection{Geschichte}
+\subsection{Grundlagen}
 Die Android Debug Bridge ist eine Softwaresuite, mit der es möglich ist, von Host PCs mit Android Geräten zu kommunizieren.
 Der Hauptnutzen besteht darin, Android Applikationen im Emulator oder direkt auf echten Geräten zu debuggen.
 Dabei wird auf dem Host ein Server gestartet, welcher die Kommunikation von Host und Endgerät übernimmt. 
-Mit Clients (z.B. dem adb command line tool, oder IDEs wie Android Studio), verbinden sich mit dem Server und senden Befehle an das verbundene Endgerät.
-Auf den Endgeräten oder im Emulator läuft im Hintergrund ein Dienst, der die Kommandos vom Server entgegennimmt und antwortet. Die Kommunikation läuft über TCP,
-was es Clients ermöglicht sich über das Netzwerk mit adb Servern zu verbinden.
+Mit Clients (z.B. dem adb command line tool, oder IDEs wie Android Studio), verbinden sich mit dem Server und senden Befehle an das über USB (oder Wifi)(oder Wifi)  mit dem Server verbundene Endgerät.
+Auf den Endgeräten oder im Emulator läuft im Hintergrund ein Dienst, der die Kommandos vom Server entgegennimmt und antwortet. Die Kommunikation mit dem Server läuft über TCP,
+was es Clients ermöglicht sich über das Netzwerk mit Servern zu verbinden.
 Der ADB Dienst auf Endgeräten, muss meist explizit durch Nutzer aktiviert werden, bevor adb benutzt werden kann. Da adb für das debuggen von Apps, also für Entwickler konzipiert ist, stellt dies im allgemeinen kein Usability Problem dar.
+
+\begin{figure}
+	\centering
+	\caption{Android Debug Bridge Architektur}
+	\includegraphics[width=0.4\textwidth]{media/adb.png}	
+	\label{adb}
+\end{figure}
+
+\subsection{Verwendung mit externen Geräten}
+Außer dem benutzten der ADB zum debuggen, kann die Architektur auch benutzt werden, um eigene Kommunikationsprotokolle zu implementieren.
+Dabei wird das eigene Protokoll als eine Zusatzschicht über adb, in Form von Kommandos implementiert. TODO ??
 
 
 TODO wann von wem zur Device kommunikation ?? --> IOIO
