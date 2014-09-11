@@ -94,7 +94,7 @@ was es Clients ermöglicht sich über das Netzwerk mit Servern zu verbinden. (Si
 Der ADB Dienst auf den Endgeräten muss explizit durch den Nutzer aktiviert werden, bevor er benutzt werden kann.
 Da adb für das debuggen von Apps, also für Softwareentwickler konzipiert ist, stellt dies im allgemeinen kein Usability Problem dar. 
 Das ADB Protokoll selbst ist sehr einfach gehalten, so dass eine eigenständige Reimplementierung möglich ist.
-Die Kommunikation läuft dabei über einfache Message Packete, indenen verschiedene Kommandos enthalten sein können.
+Die Kommunikation läuft dabei über einfache Message Pakete, in denen verschiedene Kommandos enthalten sein können.
 \lstset{language=C,
 	basicstyle=\ttfamily\scriptsize
 }
@@ -109,10 +109,11 @@ Dabei wird das eigene Protokoll als eine Zusatzschicht über adb, in Form von Ko
 TODO wann von wem zur Device kommunikation ?? --> IOIO
 
 \section{Bluetooth}
-Mit dem Bluetooth Standart ist es seit den 90er Jahren möglich, Geräte miteinander über Funktechnik zu verbinden. Bluetoothschnittstellen gehören schon lange zur Standardaustattung bei Handys und Smartphones. Zur Anbindung von eigen entwickelter Elektronik ist Bluetooth aber nur bedingt geeignet, da die elektronische Umsetzung recht teuere und komplexe Chips erfordert. Außerdem ist der Stromverbrauch auf Android Seite recht hoch.
+Mit dem Bluetooth Standard ist es seit den 90er Jahren möglich, Geräte miteinander über Funktechnik zu verbinden. Bluetoothschnittstellen gehören schon lange zur Standardaustattung bei Handys und Smartphones.
+Zur Anbindung von eigen entwickelter Elektronik ist Bluetooth aber nur bedingt geeignet, da die elektronische Umsetzung recht teuere und komplexe Chips erfordert. Außerdem ist der Stromverbrauch auf Android Seite recht hoch.
 \subsection{Bluetooth Low Energy}
-Bluetooth Low Energy, kurz BLE ist seid 2009 optionaler Teil des Bluetooth Standard Version 4.0. 
-Ziel von BLE ist es, den Stromverbrauch mittels darauf optimierter Protokolle und anderer Einschränkungen gegenüber Bluetooth zu veringern.
+Bluetooth Low Energy, kurz BLE ist seit 2009 optionaler Teil des Bluetooth Standard Version 4.0. 
+Ziel von BLE ist es, den Stromverbrauch mittels darauf optimierter Protokolle und anderer Einschränkungen gegenüber Bluetooth zu verringern.
 In Smartphones wurde BLE in nennenswertem Umfang zuerst von Apple mit iOS 5 ( Oktober 2011)unterstützt.
 Von Android wird Bluetooth LE ab der Version 4.3 (Release Juli 2013) unterstützt.
 BLE ermöglicht es Chips zu entwickeln, die nur dieses Protokoll unterstützen (kein volles Bluetooth TODO), was die Chips für Hardwarehersteller billiger und einfacher zu verwenden macht.
@@ -125,30 +126,30 @@ So gibt es zum Beispiel Services
 
 \section{Audio}
 Android unterstützt Entwickler bei der Einbindung von Audio Geräten. Das Verwalten der Hardware wird von Android komplett übernommen.
-Falls gewünscht, können Enwickler von Audio Applikationen über den AudioManager herausfinden, was für Geräte angeschlossen sind. So kann man zum Beispiel die Lautstärke anpassen wenn ein Bluetooth Headset verbunden wird, oder Kopfhörer entfernt werden.
+Falls gewünscht, können Entwickler von Audio Applikationen über den AudioManager herausfinden, was für Geräte angeschlossen sind. So kann man zum Beispiel die Lautstärke anpassen wenn ein Bluetooth Headset verbunden wird, oder Kopfhörer entfernt werden.
 
 Da die Verwendung von Audio Geräten fast automatisch abläuft, wird hier nicht weiter auf Audio Geräte eingegangen.
 
 Historisch gab es einige Entwicklungen die Audioausgabe zur Übermittlung an externe Geräte zu verwenden. Diese sind jedoch in Anbetracht heutiger Möglichkeiten eher als historische Kuriositäten von Bastlern zu sehen.
-Ein Beispiel für ein solches Projekt ist Project HiJack \cite{hijack} , welches eine Hard- und Software Platform zur Übermittlung von Signalen und Verarbeitung dieser auf Microcontrolern unter iOS sowie Android entwickelte.
+Ein Beispiel für ein solches Projekt ist Project HiJack \cite{hijack} , welches eine Hard- und Software Plattform zur Übermittlung von Signalen und Verarbeitung dieser auf Microcontrolern unter iOS sowie Android entwickelte.
 Die Probleme hierbei sind vor allem die analoge Übertragung und die relativ begrenzte Bandbreite.
 
 
 \section{AOA (Android OpenAccessory)}
-Android OpenAccessory ist der Name eines von Google entwickelten Protokols, was 
+Android OpenAccessory ist der Name eines von Google entwickelten Protokolls, was 
 dezidiert für die Anbindung von externen Geräten an Android Geräte entwickelt wurde.
 Die erste Version (ADK 2011) wurde im Mai 2011 vorgestellt.
 
-Das ADK besteht aus einer Hardware Referenz Platform, sowie Source Code für diese, damit 
+Das ADK besteht aus einer Hardware Referenz Plattform, sowie Source Code für diese, damit 
 Entwickler einfach Hardware und Software anpassen und erweitern können.
 \cite{developaoa}
 \subsection{Ziel}
 Ziel Googles ist es mithilfe des AOA einen einheitlichen Standard zur Verbindung von externen Geräten mit Android Geräten zu etablieren.
-Dies führt dazu, dass Endanwender ohne auf spezille Gerät Kombinationen verwendet zu müssen, externe Hardware kaufen und benutzen können.
+Dies führt dazu, dass Endanwender ohne auf spezielle Gerät Kombinationen verwendet zu müssen, externe Hardware kaufen und benutzen können.
 Google veröffentlichte bisher (Stand September 2014), zwei Versionen des ADKs, 2011 und 2012. 
 
 \subsection{Vergleich mit ADB}
-Gegenüber der Kommunikation über das ADB Protokoll, bietet AOA einige Vorteile. In \ref{table:vergl} sind einige Kenngrößen gegenüber gestellt. Der größte Vorteil der Benutzung von AOA gegenüber ADB, besteht darin, dass AOA nicht explizit vom Benutzer eingeschaltet werden muss und offiziel unterstüzt wird.
+Gegenüber der Kommunikation über das ADB Protokoll, bietet AOA einige Vorteile. In \ref{table:vergl} sind einige Kenngrößen gegenüber gestellt. Der größte Vorteil der Benutzung von AOA gegenüber ADB, besteht darin, dass AOA nicht explizit vom Benutzer eingeschaltet werden muss und offiziell unterstützt wird.
 
 
 \begin{table}
@@ -166,20 +167,44 @@ Gegenüber der Kommunikation über das ADB Protokoll, bietet AOA einige Vorteile
 
 \subsection{ADK 2011}
 Beim ADK 2011 wurde von Google eine
-Referenzplatform auf Basis eines Arduino Mega 2560, welcher ein USB Host TODO enthält, sowie eine Arduino Bibliothek zur Kommunikation mit fähigen Android Geräten veröffentlicht.
-Die Android seitige Funktionalität des AOA wurde in Android 2.3.4 (Release April 2011) und spätere Versionen integriert. 
-
+Referenz Plattform auf Basis eines Arduino Mega2560 Microcontroller System, welches ein USB Host Modul enthält, sowie eine Arduino Bibliothek zur Kommunikation über AOA mit fähigen Android Geräten veröffentlicht.
+Durch die Benutzung des Arduino Controllers ermöglicht es Google, Hobby Entwicklern einen enfachen Einstieg in die Entwicklung von Accesoires, da diese Microcontroller sehr verbreitet und es viele Tools für diese Systeme gibt.
+So ist die Programmierung mit der Arduino IDE möglich, welche durch einen C-Dialekt geschiet, welcher auch für Anfänger einfach verständlich ist.
+Die Android seitige Funktionalität von AOA wurde in Android 2.3.4 (Release April 2011) und spätere Versionen integriert. 
+Um mit dem ADK eigene Accesoires entwickeln zu können, muss das Board zunächst mit der von Google bereitgestellten Firmware, welche AOA implementiert geflasht werden.
+Danach kann mit der Arduino IDE 
 TODO Beispiele
 \subsection{ADK 2012}
 \subsubsection{Änderungen}
+Im der 2012er Version des ADK ist die Hardware Platform gewechselt geworden. Nun dient ein Arduino kompatibles Board mit einem ARM Cortex M3, Sensoren für Licht, Farbe, Temperatur, Feuchtigkeit, Druck und Beschleunigung, einem Micro SD Card slot und Bluetooth als Referenz.
+Die neuen Sensoren und Verbindungsmöglichkeiten machen dieses Board noch attraktiver für Entwickler, welche eigene Hardwareerweiterungen vermeiden wollen.
+Im ADK 2012 wurde die Möglichkeit von Audio Übertragungen über das AOA Protokoll hinzugefügt, wodurch Anwendungen in diesem Gebiet vereinfacht werden.
+Außerdem kann AOA über Bluetooth verwendet werden. Hierfür wird das Bluetooth Serial Port Profile (SPP) zur Kommunikation genutzt. Für eigene Hardware muss also ein Bluetoothchip der dieses Profil unterstützt verwendet werden.
+
+\lstinputlisting[language=Java]{code/bluetooth.java}
+In der Android App kann über die Android Bluetooth Schnittstelle eine Verbindung aufgebaut werden.
+\lstinputlisting[language=Java]{code/bluetooth2.java}
+Dann kann einfach über Streams mit dem Gerät kommuniziert werden.
 
 \subsection{Das AOA Protokoll}
+Um mit einem Accesoire Gerät mit einem Android Gerät kommunizieren zu können, muss zunächst das Android Gerät in den richtigen Modus versetzt werden.
+Dies geschiet durch einen Request 51 TODO, der zurückliefert welche Version des AOA Protokolls unterstützt wird. Falls keine Antwort zurückkommt, wird das verbundene Geräte ignoriert.
+Wenn die Verbindung aufgebaut wurde, müssen geeignete USB Endpunkte gefunden werden. Endpunkte sind vom USB Interface bereitgestellte Transportmethoden. An sie können Daten übertragen werden.
+Endpunkte werden von allen USB Geräten verwendet, die verschiedenen Typen sind im USB Standard beschrieben.
+AOA benutzt "Bulk" Endpunkte. Diese werden bei USB allgemein zum Transport von längeren Blockartigen Datenblöcken benutzt.
+Bulk Transfers verwenden CRC zur Fehlererkennung und Korrektur. Es ist garantiert das übertragene Daten ankommen, es gibt allerdings keine Bandbreite oder Latenz Vorschriften.
+\cite{usbbulk}
+Nach dem die korrekten Endpunkte gefunden wurde, können sie von dem Accesoir zum senden von Daten verwendet werden.
+Auf dem Androidgerät wird daraufhin eine Liste von Applikationen welche die AOA Api unterstüzten dem Benutzer gezeigt, dieser kann damit die zum aktuellen Accesoir passende Applikation starten, welche dann Daten austauschen kann. TODO echt?
+
+
+Erkannt werden kann der Accesory Modus ist, wenn das USB-Interface eine Vendor ID 0x18D1 und eine Produkt ID von 0x2D00 oder 0x2D01 hat. 
 
 \section{Beispiels AOA Applikation}
 Da Android OpenAccessory die von Google offiziell unterstütze API für die Anbindung externer Geräte ist, wird der Aufbau von einer solchen Applikation detallierter eingegangen.
 \subsection{AOA Hardware}
 Um mit AOA eine Anwendung mit Hardwarekomponente entwickeln zu können, braucht man ein kompatibles Hardwareboard.
-Zurzeit können hierfür die von Google als Referenzplatform bereitgestellten Arduinos, sowie einzelne andere Boards von Drittherstellern, wie z. B. das IOIO Board \cite{ioio}, das AOAA Kit von Embedded Artists\cite{aoaa},  TODO more examples , oder man entwickelt die Elektronik basierend auf der Dokumentation des Protokolls selbst\cite{aoaprotocol2}.
+Zurzeit können hierfür die von Google als Referenz Plattform bereitgestellten Arduinos, sowie einzelne andere Boards von Drittherstellern, wie z. B. das IOIO Board \cite{ioio}, das AOAA Kit von Embedded Artists\cite{aoaa},  TODO more examples , oder man entwickelt die Elektronik basierend auf der Dokumentation des Protokolls selbst\cite{aoaprotocol2}.
 Für die Beispielsanwendung wird das IOIO Board benutzt.
 \subsection{IOIO Hardware}
 
