@@ -95,7 +95,11 @@ Der ADB Dienst auf den Endgeräten muss explizit durch den Nutzer aktiviert werd
 Da adb für das debuggen von Apps, also für Softwareentwickler konzipiert ist, stellt dies im allgemeinen kein Usability Problem dar. 
 Das ADB Protokoll selbst ist sehr einfach gehalten, so dass eine eigenständige Reimplementierung möglich ist.
 Die Kommunikation läuft dabei über einfache Message Packete, indenen verschiedene Kommandos enthalten sein können.
-
+\lstset{language=C,
+	basicstyle=\ttfamily\scriptsize
+}
+\lstinputlisting{code/adb_struct_message.c}
+  
 
 \subsection{Verwendung mit externen Geräten}
 Außer dem benutzten der ADB zum debuggen, kann die Architektur auch benutzt werden, um eigene Kommunikationsprotokolle zu implementieren.
