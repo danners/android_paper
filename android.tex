@@ -144,7 +144,8 @@ Dies führt dazu, dass Endanwender ohne auf spezille Gerät Kombinationen verwen
 Google veröffentlichte bisher (Stand September 2014), zwei Versionen des ADKs, 2011 und 2012. 
 
 \subsection{Vergleich mit ADB}
-Gegenüber der Kommunikation über das ADB Protokoll, bietet AOA einige Vorteile. In \ref{table:vergl} sind einige Kenngrößen gegenüber gestellt.
+Gegenüber der Kommunikation über das ADB Protokoll, bietet AOA einige Vorteile. In \ref{table:vergl} sind einige Kenngrößen gegenüber gestellt. Der größte Vorteil der Benutzung von AOA gegenüber ADB, besteht darin, dass AOA nicht explizit vom Benutzer eingeschaltet werden muss und offiziel unterstüzt wird.
+
 
 \begin{table}
 	\centering
@@ -174,7 +175,7 @@ TODO Beispiele
 Da Android OpenAccessory die von Google offiziell unterstütze API für die Anbindung externer Geräte ist, wird der Aufbau von einer solchen Applikation detallierter eingegangen.
 \subsection{AOA Hardware}
 Um mit AOA eine Anwendung mit Hardwarekomponente entwickeln zu können, braucht man ein kompatibles Hardwareboard.
-Zurzeit können hierfür die von Google als Referenzplatform bereitgestellten Arduinos, sowie einzelne andere Boards von Drittherstellern, wie z. B. das IOIO Board \cite{ioio}, das AOAA Kit von Embedded Artists\cite{aoaa},  TODO more examples , oder man entwickelt die Elektronik basierend auf der Dokumentation des Protokolls selbst.
+Zurzeit können hierfür die von Google als Referenzplatform bereitgestellten Arduinos, sowie einzelne andere Boards von Drittherstellern, wie z. B. das IOIO Board \cite{ioio}, das AOAA Kit von Embedded Artists\cite{aoaa},  TODO more examples , oder man entwickelt die Elektronik basierend auf der Dokumentation des Protokolls selbst\cite{aoaprotocol2}.
 Für die Beispielsanwendung wird das IOIO Board benutzt.
 \subsection{IOIO Hardware}
 
@@ -193,8 +194,8 @@ Zukunft TODO
 \subsection{AOA}
 
 \subsection{Bluetooth}
-\subsection{andere Techniken}
 
+\subsection{NFC}
 \section{Fazit}
 
 
@@ -205,5 +206,7 @@ Zukunft TODO
 \bibliographystyle{IEEEtran}
 \bibliography{android_quotes}
 
+% for the book
+\nocite{*}
 \end{document}
 
