@@ -122,11 +122,24 @@ So gibt es zum Beispiel Services
 \cite{bluetooth}
 
 \section{NFC TODO}
-Near Field Communication 
+Near Field Communication ist ein Standard zu Datenübertragung über sehr kurze Strecken ( wenige Zentimeter). 
+NFC findet unter anderem in verschiedenen Zahlungssystemen verwendung, bei denen Kunden mit Hilfe einer Karte, die einen NFC Chip enthält Zahlungen tätigen können.
+Android unterstützt seit Version 2.3 Gingerbread. Allerdings besitzen nur wenige Smartphones die nötige NFC Hardware um NFC nutzen zu können.
+Android nutzt NFC auch für die Funktion Android Beam, bei der Dateien von einem Android Gerät auf ein anderes übertragen werden können, ohne eine feste Verbindung einzurichten.
+
+TODO Code
 
 
 
 \section{USB OTG TODO}
+USB On-The-Go ist eine Spezifikation, die USB Geräten erlaubt dynamisch zwischen verschiedenen Modi zu wechseln. Historisch sind USB Geräte entweder Host oder Slave.
+Der Host ist bei USB für die Bereitstellung von Strom und Spannung zuständig, Slave Geräte sind Geräte die als Zusatzgeräte an den Host angeschlossen werden, um diesen mit Funktionen zu erweitern.
+Hosts sind meistens PCs, Slaves Peripheriegeräte wie Tastaturen, Mäusen und Speichersticks.
+USB OTG ermöglicht es nun Geräten selbst die Rolle auszuwählen.
+Mit einigen wenigen Androidgeräten kann man OTG verwenden. Der verbaute USB Controller muss dafür OTG unterstützen.
+Vor allem Tablets ermöglichen OTG, damit man zum Beispiel Tastaturen, Drucker oder USB Sticks verwenden kann.
+OTG ermöglicht es also Standard USB Geräte mit Android zu benutzen. Android unterstützt die durch den Linux Kernel unterstüzten USB Geräte. Eigene Hardware die mit der OTG Unterstützung kontrolliert werden könnte zu entwickeln, wäre denkbar aber durch die Komplexität von USB mit hohem Aufwand verbunden.
+Es müsste ein Gerät entwickelt werden, welches eines der Standard USB Profile implmentiert, jedoch die spezifierten Kommandos nutzt um Funktionen umzusetzen.
 
 \section{Audio}
 Android unterstützt Entwickler bei der Einbindung von Audio Geräten. Das Verwalten der Hardware wird von Android komplett übernommen.
