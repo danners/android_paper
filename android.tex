@@ -123,6 +123,7 @@ So gibt es zum Beispiel Services
 
 \section{NFC TODO}
 
+\section{USB OTG}
 
 \section{Audio}
 Android unterstützt Entwickler bei der Einbindung von Audio Geräten. Das Verwalten der Hardware wird von Android komplett übernommen.
@@ -213,16 +214,29 @@ Für die Beispielsanwendung wird das IOIO Board benutzt.
 \subsection{IOIO Hardware}
 Die erste Version des IOIO Boards wurde im September 2011 vorgestellt. Das Board wurde von Ytai Ben-Tsvi, einem Google Angestellten, für eigene Projekte im Rahmen der Google 20\% Zeit entwickelt und als Kooperation mit dem Elektronikunternehmen SparkFun produziert und verkauft.
 Es war der erste Board, welches ohne Modifikationen an Android Geräten von diesen verwendet werden konnte, um damit externe Peripherie zu steuern.
-Dies wurde über die Verwendung der Android Debug Bridge erreicht.
+Dies wurde über die Verwendung der Android Debug Bridge erreicht, welche als Übertragungsprotokoll verwendet wird.
+Als weitere Protokollschicht wurde ein eigenes IOIO Protokoll entwickelt, mit dem einfache Kommandos übermittelt werden können.
+So gibt es Kommanos wie \glqq Schalte Pin 1 ein\grqq, oder \glqq Lese Pin 3 analog\grqq, die durch entsprechende Methoden direkt in der zugehörigen IOIO Android Bibliothek aufgerufen werden können.
+
+Als Microcontroller kommt ein PIC24F zum Einsatz, welcher auf Grund seiner vielen Anschlüsse und geringer Kosten gewählt wurde.
 Das Board besitzt 48 Pins, welche als Digitale Inputs und Outputs angesteuert werden können. 16 dieser Pins können auch als analoge Inputs verwendet werden.
 Zusätzlich können 9 PWM (Pulsweitenmodulation) Ausgänge verwendet werden.
 Für die Kommunikation mit anderen Elektronischen Geräten stehen 4 UART Kanäle, 3 SPI Kanäle und 3 TWI Känale, welche mit I\textsuperscript{2}C kompatibel sind zur Verfügung.
 Der Strom wird über ein externes 5V Volt Netzteil bereitgestellt, welches bis zu 1.5 Ampere liefern muss.
+
 Die externe Stromversorgung ist praktisch, da sowohl das Androidgerät geladen werden kann, als auch Motoren oder ähnliches durch das Netzteil mitversorgt werden können.
 Ziel der Neuentwicklung war vor allem, eine kostengünstige Möglichkeit, die gleichzeitig mit Standard Android Geräten verwendet werden kann, der Öffentlichkeit bereitzustellen.
 Mit einem Preis von 50\textdollar{} ist das Projekt für Hardwarebastlereien und Prototypen geeignet.
+Das Board besitzt einen USB Anschluss, welcher im Host Modus betrieben werden kann, was Voraussetzung für den Betrieb von ADB und AOA ist.
 
-
+\subsubsection{IOIO-OTG}
+Im Sommer 2012 wurde die zweite Version des IOIO Boards veröffentlicht.
+Die größte Änderung ist die Möglichkeit das IOIO Board als USB OTG Device zu betreiben.
+Dadurch kann das Board sowohl als USB Master (auch Host) als auch als USB Slave (auch Peripheral) verwendet werden.
+Dies ermöglicht die Verbindung mit PCs, mit denen das Gerät auch direkt programmiert werden kann.
+Dies vereinfacht den Entwicklungsprozess, da keine Android Applikation mehr auf dem Gerät installiert werden muss um Programme zu testen.
+In der Java Bibliothek wurde diese Neuerung auch aufgenommen, so dass diese nicht nur unter Android laufen kann, sondern auch in der Standard JVM.
+Außerdem konnten die Produktionskosten weiter gesenkt werden, die neue Version ist nun bei Partnerunternehmen für ca. 30\textdollar{} erhältlich.
 
 \subsection{Vorhaben}
 
