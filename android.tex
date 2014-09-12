@@ -146,7 +146,7 @@ Entwickler einfach Hardware und Software anpassen und erweitern können.
 \subsection{Ziel}
 Ziel Googles ist es mithilfe des AOA einen einheitlichen Standard zur Verbindung von externen Geräten mit Android Geräten zu etablieren.
 Dies führt dazu, dass Endanwender ohne auf spezielle Gerät Kombinationen verwendet zu müssen, externe Hardware kaufen und benutzen können.
-Google veröffentlichte bisher (Stand September 2014), zwei Versionen des ADKs, 2011 und 2012. 
+Google veröffentlichte bisher (Stand September 2014) zwei Versionen des ADKs, 2011 und 2012. 
 
 \subsection{Vergleich mit ADB}
 Gegenüber der Kommunikation über das ADB Protokoll, bietet AOA einige Vorteile. In \ref{table:vergl} sind einige Kenngrößen gegenüber gestellt. Der größte Vorteil der Benutzung von AOA gegenüber ADB, besteht darin, dass AOA nicht explizit vom Benutzer eingeschaltet werden muss und offiziell unterstützt wird.
@@ -176,37 +176,53 @@ Danach kann mit der Arduino IDE
 TODO Beispiele
 \subsection{ADK 2012}
 \subsubsection{Änderungen}
-Im der 2012er Version des ADK ist die Hardware Platform gewechselt geworden. Nun dient ein Arduino kompatibles Board mit einem ARM Cortex M3, Sensoren für Licht, Farbe, Temperatur, Feuchtigkeit, Druck und Beschleunigung, einem Micro SD Card slot und Bluetooth als Referenz.
+Im der 2012er Version des ADK ist die Hardware Platform gewechselt geworden. Nun dient ein Arduino kompatibles Board mit einem ARM Cortex M3, Sensoren für Licht, Farbe, Temperatur, Feuchtigkeit, Druck und Beschleunigung, einem Micro SD Card Slot und Bluetooth als Referenz.
 Die neuen Sensoren und Verbindungsmöglichkeiten machen dieses Board noch attraktiver für Entwickler, welche eigene Hardwareerweiterungen vermeiden wollen.
+
 Im ADK 2012 wurde die Möglichkeit von Audio Übertragungen über das AOA Protokoll hinzugefügt, wodurch Anwendungen in diesem Gebiet vereinfacht werden.
-Außerdem kann AOA über Bluetooth verwendet werden. Hierfür wird das Bluetooth Serial Port Profile (SPP) zur Kommunikation genutzt. Für eigene Hardware muss also ein Bluetoothchip der dieses Profil unterstützt verwendet werden.
+Außerdem kann AOA über Bluetooth verwendet werden. Hierfür wird das Bluetooth Serial Port Profile (SPP) zur Kommunikation genutzt. Für eigene Implementierungen muss somit ein Bluetoothchip der dieses Profil unterstützt verwendet werden.
 
 \lstinputlisting[language=Java]{code/bluetooth.java}
 In der Android App kann über die Android Bluetooth Schnittstelle eine Verbindung aufgebaut werden.
 \lstinputlisting[language=Java]{code/bluetooth2.java}
-Dann kann einfach über Streams mit dem Gerät kommuniziert werden.
+Dann kann über Streams mit dem Gerät kommuniziert werden.
 
 \subsection{Das AOA Protokoll}
 Um mit einem Accesoire Gerät mit einem Android Gerät kommunizieren zu können, muss zunächst das Android Gerät in den richtigen Modus versetzt werden.
 Dies geschiet durch einen Request 51 TODO, der zurückliefert welche Version des AOA Protokolls unterstützt wird. Falls keine Antwort zurückkommt, wird das verbundene Geräte ignoriert.
 Wenn die Verbindung aufgebaut wurde, müssen geeignete USB Endpunkte gefunden werden. Endpunkte sind vom USB Interface bereitgestellte Transportmethoden. An sie können Daten übertragen werden.
 Endpunkte werden von allen USB Geräten verwendet, die verschiedenen Typen sind im USB Standard beschrieben.
-AOA benutzt "Bulk" Endpunkte. Diese werden bei USB allgemein zum Transport von längeren Blockartigen Datenblöcken benutzt.
-Bulk Transfers verwenden CRC zur Fehlererkennung und Korrektur. Es ist garantiert das übertragene Daten ankommen, es gibt allerdings keine Bandbreite oder Latenz Vorschriften.
+AOA benutzt Bulk-Endpunkte. Diese werden bei USB allgemein zum Transport von längeren Blockartigen Datenblöcken benutzt.
+
+Bulk Transfers verwenden CRC zur Fehlererkennung und Korrektur. Es ist garantiert das übertragene Daten korrekt ankommen, es gibt allerdings keine Bandbreite oder Latenz Vorschriften.
 \cite{usbbulk}
 Nach dem die korrekten Endpunkte gefunden wurde, können sie von dem Accesoir zum senden von Daten verwendet werden.
+
 Auf dem Androidgerät wird daraufhin eine Liste von Applikationen welche die AOA Api unterstüzten dem Benutzer gezeigt, dieser kann damit die zum aktuellen Accesoir passende Applikation starten, welche dann Daten austauschen kann. TODO echt?
 
 
 Erkannt werden kann der Accesory Modus ist, wenn das USB-Interface eine Vendor ID 0x18D1 und eine Produkt ID von 0x2D00 oder 0x2D01 hat. 
 
-\section{Beispiels AOA Applikation}
+\section{Beispiels AOA Anwendung}
 Da Android OpenAccessory die von Google offiziell unterstütze API für die Anbindung externer Geräte ist, wird der Aufbau von einer solchen Applikation detallierter eingegangen.
 \subsection{AOA Hardware}
 Um mit AOA eine Anwendung mit Hardwarekomponente entwickeln zu können, braucht man ein kompatibles Hardwareboard.
 Zurzeit können hierfür die von Google als Referenz Plattform bereitgestellten Arduinos, sowie einzelne andere Boards von Drittherstellern, wie z. B. das IOIO Board \cite{ioio}, das AOAA Kit von Embedded Artists\cite{aoaa},  TODO more examples , oder man entwickelt die Elektronik basierend auf der Dokumentation des Protokolls selbst\cite{aoaprotocol2}.
 Für die Beispielsanwendung wird das IOIO Board benutzt.
+
 \subsection{IOIO Hardware}
+Die erste Version des IOIO Boards wurde im September 2011 vorgestellt. Das Board wurde von Ytai Ben-Tsvi, einem Google Angestellten, für eigene Projekte im Rahmen der Google 20\% Zeit entwickelt und als Kooperation mit dem Elektronikunternehmen SparkFun produziert und verkauft.
+Es war der erste Board, welches ohne Modifikationen an Android Geräten von diesen verwendet werden konnte, um damit externe Peripherie zu steuern.
+Dies wurde über die Verwendung der Android Debug Bridge erreicht.
+Das Board besitzt 48 Pins, welche als Digitale Inputs und Outputs angesteuert werden können. 16 dieser Pins können auch als analoge Inputs verwendet werden.
+Zusätzlich können 9 PWM (Pulsweitenmodulation) Ausgänge verwendet werden.
+Für die Kommunikation mit anderen Elektronischen Geräten stehen 4 UART Kanäle, 3 SPI Kanäle und 3 TWI Känale, welche mit I\textsuperscript{2}C kompatibel sind zur Verfügung.
+Der Strom wird über ein externes 5V Volt Netzteil bereitgestellt, welches bis zu 1.5 Ampere liefern muss.
+Die externe Stromversorgung ist praktisch, da sowohl das Androidgerät geladen werden kann, als auch Motoren oder ähnliches durch das Netzteil mitversorgt werden können.
+Ziel der Neuentwicklung war vor allem, eine kostengünstige Möglichkeit, die gleichzeitig mit Standard Android Geräten verwendet werden kann, der Öffentlichkeit bereitzustellen.
+Mit einem Preis von 50\textdollar{} ist das Projekt für Hardwarebastlereien und Prototypen geeignet.
+
+
 
 \subsection{Vorhaben}
 
