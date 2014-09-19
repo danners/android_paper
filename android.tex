@@ -119,20 +119,45 @@ Da die Verwendung von Audio Geräten fast automatisch abläuft, wird hier nicht 
 
 Historisch gab es einige Entwicklungen die Audioausgabe zur Übermittlung an externe Geräte zu verwenden. Diese sind jedoch in Anbetracht heutiger Möglichkeiten eher als historische Kuriositäten von Bastlern zu sehen.
 Ein Beispiel für ein solches Projekt ist Project HiJack \cite{hijack} , welches eine Hard- und Software Plattform zur Übermittlung von Signalen und Verarbeitung dieser auf Microcontrolern unter iOS sowie Android entwickelte.
-Die Probleme hierbei sind vor allem die analoge Übertragung und die relativ begrenzte Bandbreite.
+Die Daten werden dabei analog übertragen und von dem empfangenden Gerät wieder digitalisiert.
+Die Probleme hierbei sind vor allem die Komplexität, die begrenzte Bandbreite und die mangelnde Unterstützung seitens der Hersteller.
 
 \section{USB}
+Der Universal Serius Bus (USB), ist schon seit langem die am weitesten verbreitete Schnittstelle zwischen PCs und Peripheriegeräten.
+Die USB Schnittstelle hat mittlerweile in vielen Bereichen wie z.B. der Anbindung von Mäusen, Tastaturen und Festplatten andere speziellere Schnittstellen verdrängt.
+Auch die meisten Telefone besitzen seit geraumer Zeit USB-Schnittstellen. Diese wurden anfangs vor allem zur Übertragung von Daten von und zu PCs benutzt sowie für das Akku Laden.
+Durch die Standardisierung der Anschlüsse und von Protokollen, hinzufügen und entfernen von Geräten im laufendem Betrieb und gute Softwareunterstützung ist USB für Anwender einfach zu bedienen.
 
-\subsection{USB OTG TODO}
-USB On-The-Go ist eine Spezifikation, die USB Geräten erlaubt dynamisch zwischen verschiedenen Modi zu wechseln. Historisch sind USB Geräte entweder Host oder Slave.
-Der Host ist bei USB für die Bereitstellung von Strom und Spannung zuständig, Slave Geräte sind Geräte die als Zusatzgeräte an den Host angeschlossen werden, um diesen mit Funktionen zu erweitern.
-Hosts sind meistens PCs, Slaves Peripheriegeräte wie Tastaturen, Mäusen und Speichersticks.
-USB OTG ermöglicht es nun Geräten selbst die Rolle auszuwählen.
-Mit einigen wenigen Androidgeräten kann man OTG verwenden. Der verbaute USB Controller muss dafür OTG unterstützen.
+USB ist ein serieller Bus, d. h. Daten werden sequentiell zwischen den Geräten übertragen. 
+Dabei gibt es einen Controller (Master), welche die Koordination der angeschlossenen Geräte (Slaves) übernimmt.
+Slaves dürfen nur Daten über den Bus schicken, wenn sie vom Master dazu aufgefordert werden.
+Im normalen Gebrauch übernimmt der PC die Rolle des Masters, die Geräte sind Slaves. Die Stromversorgung der Slaves kann dabei über das gleiche Kabel durch den Master erfolgen, wenn der Verbrauch im Rahmen des Standards liegt (5V, 500mA bei USB v2).
+
+Um mit USB angeschlossene Geräte verwenden zu können, muss der Master das Gerät identifizieren können. i
+Die Erkennung läuft bei USB über sogenannte Deskriptoren. 
+Der Device-Deskriptor enthält eine Hersteller-id, sowie eine Geräte id.
+Im Device Deskriptor kann auch hinterlegt werden, ob das Gerät einer durch den Standard festgelegten Klasse angehört. 
+Klassen gibt es zum Beispiel für Massenspeichergeräte, Drucker und Human Interface Devices (Maus, Tastatur usw.).
+Das Betriebssystem kann dann anhand des Deskriptors passende Treiber laden. Wenn das Gerät zu einer Standardklasse gehört, kann einfach der allgemeine Treiber verwendet werden. Dies ist zum Beispiel bei USB Mäusen der Fall.
+Falls das Gerät zu keiner Standardklasse gehört, muss ein gerätespezifischer Treiber bereitgestellt werden.
+Zur Übermittlung von Daten stellen die Geräte virtuelle Schnittstellen bereit, welche ein oder mehrere adressierbare Endpunkte beinhalten. 
+
+Endpunkte sind vom USB Interface bereitgestellte Adressen. An sie können Daten unidirektional übertragen werden.
+Die Erkennung des Gerätes läuft über den Endpunkt mit der Adresse 0, danach werden die anderen Gerätespezifischen Endpunkte verwendet.
+
+Die Kommunikation mit den Endpunkten kann über verschiedene Modi ablaufen.
+Dabei unterscheiden sie sich z. B. bei der Bestätigung von Nachrichten oder der Priorisierung.  
+
+\subsection{USB On-The-Go}
+USB On-The-Go (OTG) ist eine Spezifikation, die USB Geräten erlaubt dynamisch zwischen verschiedenen Modi zu wechseln. 
+Im USB Standard USB Geräte entweder Host oder Slave, OTG bildet dazu eine Ausnahme, um größere Dynamik zu erlauben.
+Geräte können ohne Host-Controller kommunizieren, indem eines der Geräte zum Host wird.
+Dabei muss nur ein Teil der normalen Host Funktionalität bereitgestellt werden.
+
+Mit einigen wenigen Androidgeräten kann OTG verwendet werden. Die verbaute USB Hardware muss dafür OTG unterstützen.
 Vor allem Tablets ermöglichen OTG, damit man zum Beispiel Tastaturen, Drucker oder USB Sticks verwenden kann.
 OTG ermöglicht es also Standard USB Geräte mit Android zu benutzen. Android unterstützt die durch den Linux Kernel unterstüzten USB Geräte. Eigene Hardware die mit der OTG Unterstützung kontrolliert werden könnte zu entwickeln, wäre denkbar aber durch die Komplexität von USB mit hohem Aufwand verbunden.
-Es müsste ein Gerät entwickelt werden, welches eines der Standard USB Profile implmentiert, jedoch die spezifierten Kommandos nutzt um Funktionen umzusetzen.
-
+Es müsste ein Gerät entwickelt werden, welches eines der Standard USB Profile implementiert, jedoch die spezifizierten Kommandos nutzt um Funktionen umzusetzen.
 
 
 \subsection{AOA (Android OpenAccessory)}
@@ -189,9 +214,7 @@ Dann kann über Streams mit dem Gerät kommuniziert werden.
 \subsection{Das AOA Protokoll}
 Um mit einem Accesoire Gerät mit einem Android Gerät kommunizieren zu können, muss zunächst das Android Gerät in den richtigen Modus versetzt werden.
 Dies geschieht durch einen Request 51 TODO, der zurückliefert welche Version des AOA Protokolls unterstützt wird. Falls keine Antwort zurückkommt, wird das verbundene Geräte ignoriert.
-Wenn die Verbindung aufgebaut wurde, müssen geeignete USB Endpunkte gefunden werden. Endpunkte sind vom USB Interface bereitgestellte Transportmethoden. An sie können Daten übertragen werden.
-Endpunkte werden von allen USB Geräten verwendet, die verschiedenen Typen sind im USB Standard beschrieben.
-AOA benutzt Bulk-Endpunkte. Diese werden bei USB allgemein zum Transport von längeren Block-artigen Datenblöcken benutzt.
+Wenn die Verbindung aufgebaut wurde, müssen geeignete USB Endpunkte gefunden werden. AOA benutzt Bulk-Endpunkte. Diese werden bei USB allgemein zum Transport von längeren Block-artigen Datenblöcken benutzt.
 
 Bulk Transfers verwenden CRC zur Fehlererkennung und Korrektur. Es ist garantiert das übertragene Daten korrekt ankommen, es gibt allerdings keine Bandbreite oder Latenz Vorschriften.
 \cite{usbbulk}
