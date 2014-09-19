@@ -59,7 +59,7 @@
 Android wird auf Smartphones, Tablets, Smartwatches, Fernsehern und anderen Geräten verwendet.
 In vielen Geräten auf denen Android verwendet wird, gibt es zahlreiche Sensoren, wie Kameras, GPS, Mikrofone und ähnliches.
 Die weite Verbreitung und die Ausstattung der Hardware machen Android Geräte für eine Vielzahl von Anwendungen, bei denen externe Peripherie angeschlossen werden soll interessant.
-Heute können Entwickler von Hardware über mehrere Möglichkeiten ihre eigene Geräte mit Android Geräten zu verbinden.
+Heute können Entwickler von Hardware über mehrere Möglichkeiten ihre eigene Geräte mit Android Geräten verbinden.
 
 
 % Datum
@@ -77,23 +77,29 @@ Dabei ist neben den allgemein bekannten Verbindungsmöglichkeiten wie Bluetooth 
 Im folgenden sollen die einzelnen Verbindungsmöglichkeiten mit ihren jeweiligen Anwendungsbreichen, Vorteilen und Nachteilen vorgestellt werden.
 
 \section{Bluetooth}
-Mit dem Bluetooth Standard ist es seit den 90er Jahren möglich, Geräte miteinander über Funktechnik zu verbinden. Bluetoothschnittstellen gehören schon lange zur Standardaustattung bei Handys und Smartphones.
-Die weite Verbreitung macht Bluetooth für Hardwarehersteller von Consumer-Elektronik sehr attraktiv, da die gleiche Hardware meist einfach auf allen Betriebssystemen verwendbar gemacht werden kann.
-Zwar müssen für spezielle Geräte Treiber entwickelt werden, jedoch ist die Unterstüzung für Standardgeräte wie Headsets oder Lautsprecher schon in den Betriebssystemen enthalten.
+Mit dem Bluetooth Standard ist es seit den 90er Jahren möglich, Geräte miteinander über Funk zu verbinden. Bluetoothschnittstellen gehören schon lange zur Standardaustattung bei Handys, Smartphones und Zusatzgeräten wie Headsets.
+Die weite Verbreitung macht Bluetooth für Hardwarehersteller von Unterhaltungselektronik sehr attraktiv, da die Hardware meist einfach auf allen Betriebssystemen verwendbar ist.
+Zwar müssen für spezielle Geräte Treiber entwickelt werden, jedoch ist die Unterstützung für Standardgeräte wie Headsets oder Lautsprecher schon in den Betriebssystemen enthalten.
+
+TODO PROFILE
+\cite{bluetooth}
 
 Zur Anbindung von eigen entwickelter Elektronik ist Bluetooth aber nur bedingt geeignet, da die elektro-technische Umsetzung recht teure, komplexe Chips erfordert. Außerdem ist der Stromverbrauch zur Übermittlung der Signale recht hoch.
-So ist der totale Stromverbrauch einer Übertragung von Daten über Bluetooth zwar gering, wenn man aber die niedrige Geschwindigkeit berücksichtigt, hat Bluetooth gegenüber WI-Fi einen in etwa 10-fachen Verbrauch.\cite{wireless}
-Es ist also nur für Übertragungen mit geringer Bandbreite geeignet.
+Zwar ist der Stromverbrauch bei einer Übertragung von Daten über Bluetooth gering, wenn man aber die begrenzte Bandbreite berücksichtigt, hat Bluetooth gegenüber WI-Fi einen in etwa 10-fachen Stromverbrauch.\cite{wireless}
+Es ist also nur für Übertragungen mit geringer Bandbreite geeignet, dort bietet es aber auf Grund der einfachen Bedienung eine nutzerfreundliche Möglichkeit der Vernetzung.
 
-\subsection{Bluetooth Low Energy}
-Bluetooth Low Energy, kurz BLE ist seit 2009 optionaler Teil des Bluetooth Standard Version 4.0. 
+\subsection{Bluetooth low energy}
+Um die Probleme von Bluetooth bezüglich des Stromverbrauches zu adressieren, wurde 2009 Bluetooth low energy, kurz Bluetooth LE, als optionaler Teil des Bluetooth Standard Version 4.0 eingeführt.  
 Ziel von BLE ist es, den Stromverbrauch mittels darauf optimierter Protokolle und anderer Einschränkungen gegenüber Bluetooth zu verringern.
+Die Komplexität wird unter anderem durch die Verringerung der unterstützen Profile erreicht. Klassische Bluetooth Profile wie zum Beispiel HSP (Headset), OBEX (Datei Übertragungen) und FTP (Datei Übertragungen) sind beispielsweise nicht mehr im Standard enthalten.
+Energie wird durch ein neues Kommunikationsprotokoll gespart, bei der die Geräte im Standby(auf Verbindung wartend) mit weniger Energie auskommen.
+Außerdem wird mit Bluetooth 4.0 eine neue Kommunikationsmethode, das Attribut Protokol (ATT) eingeführt, welches von dieses Bluetooth LE verwendet und auf kleine Packetgrößen optimiert ist, was den Protokolloverhead minimiert.
+Die unterstützten Profile bauen alle auf GATT auf, welches ATT benutzt um Profile bereitzustellen.
+
+
 In Smartphones wurde BLE in nennenswertem Umfang zuerst von Apple mit iOS 5 ( Oktober 2011)unterstützt.
-Von Android wird Bluetooth LE ab der Version 4.3 (Release Juli 2013) unterstützt.
-BLE ermöglicht es Chips zu entwickeln, die nur dieses Protokoll unterstützen (kein volles Bluetooth TODO), was die Chips für Hardwarehersteller billiger und einfacher zu verwenden macht.
-Bluetooth LE Geräte stellen dabei standardisierte Services und Profile bereit, die verschiedene Anwendungsbereiche abdecken.
-So gibt es zum Beispiel Services  
-\cite{bluetooth}
+Dabei besitzen die Geräte sogenannte Dual-mode Bluetooth Schnittstellen, die sowohl die klassische Bluetooth als auch BLE Geräte unterstützen.
+Bei Android wurde die dieses Bluetooth LE Unterstützung in der Version 4.3 (Release Juli 2013) eingeführt.
 
 \section{NFC TODO}
 Near Field Communication ist ein Standard zu Datenübertragung über sehr kurze Strecken ( wenige Zentimeter). 
