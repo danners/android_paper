@@ -75,39 +75,6 @@ Diese decken ein großes Spektrum an Anwendungsmöglichkeiten ab, wobei jede Vor
 Nach ersten experimentellen Ansätzen von Hobbyentwicklern und einzelnen Firmen, hat auch Google den Nutzen einfacher Verbindung mit externen Geräten 
 erkannt und bietet seit 2011 offiziell unterstützte Möglichkeiten, dies zu realisieren. 
 
-\section{ADB (Android Debug Bridge)}
-\subsection{Grundlagen}
-Die Android Debug Bridge ist eine Softwaresuite mit der es möglich ist, von Host PCs mit Android Geräten zu kommunizieren.
-Der Hauptnutzen besteht darin, Android Applikationen in einem virtuellen Gerät (Emulator) oder direkt auf echten Geräten zu debuggen.
-Dabei wird auf dem Host ein Server gestartet, welcher die Kommunikation zwischen Host und Endgerät übernimmt. 
-
-Die Clients (z.B. das adb command line tool, oder IDEs wie Android Studio), verbinden sich mit dem Server und senden Befehle an das über USB (oder Wifi) mit dem Server verbundene Endgerät.
-Auf den Endgeräten oder im Emulator läuft im Hintergrund ein Dienst, der die Kommandos vom Server entgegennimmt und antwortet. Die Kommunikation mit dem Server läuft über TCP,
-was es Clients ermöglicht sich über das Netzwerk mit Servern zu verbinden. (Siehe Abbildung \ref{adb})
-\begin{figure}
-	\centering
-	\caption{Android Debug Bridge Architektur}
-	\includegraphics[width=0.4\textwidth]{media/adb.png}	
-	\label{adb}
-\end{figure}
-
-Der ADB Dienst auf den Endgeräten muss explizit durch den Nutzer aktiviert werden, bevor er benutzt werden kann.
-Da adb für das debuggen von Apps, also für Softwareentwickler konzipiert ist, stellt dies im allgemeinen kein Usability Problem dar. 
-Das ADB Protokoll selbst ist sehr einfach gehalten, so dass eine eigenständige Reimplementierung möglich ist.
-Die Kommunikation läuft dabei über einfache Message Pakete, in denen verschiedene Kommandos enthalten sein können.
-\lstset{language=C,
-	basicstyle=\ttfamily\scriptsize
-}
-\lstinputlisting{code/adb_struct_message.c}
-  
-
-\subsection{Verwendung mit externen Geräten}
-Außer dem benutzten der ADB zum debuggen, kann die Architektur auch benutzt werden, um eigene Kommunikationsprotokolle zu implementieren.
-Dabei wird das eigene Protokoll als eine Zusatzschicht über adb, in Form von Kommandos implementiert. TODO ??
-
-
-TODO wann von wem zur Device kommunikation ?? --> IOIO
-
 \section{Bluetooth}
 Mit dem Bluetooth Standard ist es seit den 90er Jahren möglich, Geräte miteinander über Funktechnik zu verbinden. Bluetoothschnittstellen gehören schon lange zur Standardaustattung bei Handys und Smartphones.
 Zur Anbindung von eigen entwickelter Elektronik ist Bluetooth aber nur bedingt geeignet, da die elektronische Umsetzung recht teuere und komplexe Chips erfordert. Außerdem ist der Stromverbrauch auf Android Seite recht hoch.
@@ -124,22 +91,12 @@ So gibt es zum Beispiel Services
 \section{NFC TODO}
 Near Field Communication ist ein Standard zu Datenübertragung über sehr kurze Strecken ( wenige Zentimeter). 
 NFC findet unter anderem in verschiedenen Zahlungssystemen verwendung, bei denen Kunden mit Hilfe einer Karte, die einen NFC Chip enthält Zahlungen tätigen können.
-Android unterstützt seit Version 2.3 Gingerbread. Allerdings besitzen nur wenige Smartphones die nötige NFC Hardware um NFC nutzen zu können.
+Android unterstützt seit Version 2.3. Allerdings besitzen nur wenige Smartphones die nötige NFC Hardware um NFC nutzen zu können.
 Android nutzt NFC auch für die Funktion Android Beam, bei der Dateien von einem Android Gerät auf ein anderes übertragen werden können, ohne eine feste Verbindung einzurichten.
 
 TODO Code
 
 
-
-\section{USB OTG TODO}
-USB On-The-Go ist eine Spezifikation, die USB Geräten erlaubt dynamisch zwischen verschiedenen Modi zu wechseln. Historisch sind USB Geräte entweder Host oder Slave.
-Der Host ist bei USB für die Bereitstellung von Strom und Spannung zuständig, Slave Geräte sind Geräte die als Zusatzgeräte an den Host angeschlossen werden, um diesen mit Funktionen zu erweitern.
-Hosts sind meistens PCs, Slaves Peripheriegeräte wie Tastaturen, Mäusen und Speichersticks.
-USB OTG ermöglicht es nun Geräten selbst die Rolle auszuwählen.
-Mit einigen wenigen Androidgeräten kann man OTG verwenden. Der verbaute USB Controller muss dafür OTG unterstützen.
-Vor allem Tablets ermöglichen OTG, damit man zum Beispiel Tastaturen, Drucker oder USB Sticks verwenden kann.
-OTG ermöglicht es also Standard USB Geräte mit Android zu benutzen. Android unterstützt die durch den Linux Kernel unterstüzten USB Geräte. Eigene Hardware die mit der OTG Unterstützung kontrolliert werden könnte zu entwickeln, wäre denkbar aber durch die Komplexität von USB mit hohem Aufwand verbunden.
-Es müsste ein Gerät entwickelt werden, welches eines der Standard USB Profile implmentiert, jedoch die spezifierten Kommandos nutzt um Funktionen umzusetzen.
 
 \section{Audio}
 Android unterstützt Entwickler bei der Einbindung von Audio Geräten. Das Verwalten der Hardware wird von Android komplett übernommen.
@@ -151,8 +108,21 @@ Historisch gab es einige Entwicklungen die Audioausgabe zur Übermittlung an ext
 Ein Beispiel für ein solches Projekt ist Project HiJack \cite{hijack} , welches eine Hard- und Software Plattform zur Übermittlung von Signalen und Verarbeitung dieser auf Microcontrolern unter iOS sowie Android entwickelte.
 Die Probleme hierbei sind vor allem die analoge Übertragung und die relativ begrenzte Bandbreite.
 
+\section{USB}
 
-\section{AOA (Android OpenAccessory)}
+\subsection{USB OTG TODO}
+USB On-The-Go ist eine Spezifikation, die USB Geräten erlaubt dynamisch zwischen verschiedenen Modi zu wechseln. Historisch sind USB Geräte entweder Host oder Slave.
+Der Host ist bei USB für die Bereitstellung von Strom und Spannung zuständig, Slave Geräte sind Geräte die als Zusatzgeräte an den Host angeschlossen werden, um diesen mit Funktionen zu erweitern.
+Hosts sind meistens PCs, Slaves Peripheriegeräte wie Tastaturen, Mäusen und Speichersticks.
+USB OTG ermöglicht es nun Geräten selbst die Rolle auszuwählen.
+Mit einigen wenigen Androidgeräten kann man OTG verwenden. Der verbaute USB Controller muss dafür OTG unterstützen.
+Vor allem Tablets ermöglichen OTG, damit man zum Beispiel Tastaturen, Drucker oder USB Sticks verwenden kann.
+OTG ermöglicht es also Standard USB Geräte mit Android zu benutzen. Android unterstützt die durch den Linux Kernel unterstüzten USB Geräte. Eigene Hardware die mit der OTG Unterstützung kontrolliert werden könnte zu entwickeln, wäre denkbar aber durch die Komplexität von USB mit hohem Aufwand verbunden.
+Es müsste ein Gerät entwickelt werden, welches eines der Standard USB Profile implmentiert, jedoch die spezifierten Kommandos nutzt um Funktionen umzusetzen.
+
+
+
+\subsection{AOA (Android OpenAccessory)}
 Android OpenAccessory ist der Name eines von Google entwickelten Protokolls, was 
 dezidiert für die Anbindung von externen Geräten an Android Geräte entwickelt wurde.
 Die erste Version (ADK 2011) wurde im Mai 2011 vorgestellt.
