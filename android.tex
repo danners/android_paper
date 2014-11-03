@@ -8,6 +8,8 @@
 \usepackage{hyperref}         % Hyperlinks
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 \clubpenalty = 10000           % Keine "Schusterjungen"
 \widowpenalty = 10000          % Keine "Hurenkinder"
@@ -20,6 +22,16 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 % Silbentrennung für ein einzelnes Wort deaktivieren geht mit:
 % \mbox{wort}
+
+\definecolor{mybgcolor}{HTML}{DFF56C}
+
+\lstset{
+	backgroundcolor=\color{mybgcolor},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,
+	breaklines=false,
+	commentstyle=\color{blue}
+}
 
 
 % Bei einem zwei Spalten Layout versucht Latex auf beide Seiten die gleiche Texthöhe hinzubekommen
@@ -84,19 +96,23 @@ Mit dem Bluetooth Standard ist es seit den 90er Jahren möglich, Geräte miteina
 Die weite Verbreitung macht Bluetooth für Hardwarehersteller von Unterhaltungselektronik sehr attraktiv, da die Hardware meist einfach auf allen Betriebssystemen verwendbar ist.
 Zwar müssen für spezielle Geräte Treiber entwickelt werden, jedoch ist die Unterstützung für Standardgeräte wie Headsets oder Lautsprecher schon in den Betriebssystemen enthalten.
 
-TODO PROFILE
+Der Standard beihaltet hierfür sogenannte Profile, welche festlegen wie die Geräte untereinander kommunizieren.
+Beispiele hierfür sind Profile wie HID und OBEX (Datei Transfer). 
+Durch diese Standardisierung ist sichergestellt dass die Geräte untereinander kompatibel sind.
 \cite{bluetooth}
 
-Zur Anbindung von eigen entwickelter Elektronik ist Bluetooth aber nur bedingt geeignet, da die elektro-technische Umsetzung recht teure, komplexe Chips erfordert. Außerdem ist der Stromverbrauch zur Übermittlung der Signale recht hoch.
+Zur Anbindung von selbst entwickelter Hardware ist Bluetooth aber nur bedingt geeignet, da die elektro-technische Umsetzung recht teure Chips erfordert, und ein Bluetooth Softwarestack sehr kompliziert ist. Außerdem ist der Stromverbrauch zur Übermittlung der Signale recht hoch.
 Zwar ist der Stromverbrauch bei einer Übertragung von Daten über Bluetooth gering, wenn man aber die begrenzte Bandbreite berücksichtigt, hat Bluetooth gegenüber WI-Fi einen in etwa 10-fachen Stromverbrauch.\cite{wireless}
 Es ist also nur für Übertragungen mit geringer Bandbreite geeignet, dort bietet es aber auf Grund der einfachen Bedienung eine nutzerfreundliche Möglichkeit der Vernetzung.
 
-\subsection{Bluetooth low energy}
-Um die Probleme von Bluetooth bezüglich des Stromverbrauches zu adressieren, wurde 2009 Bluetooth low energy, kurz Bluetooth LE, als optionaler Teil des Bluetooth Standard Version 4.0 eingeführt.  
+\subsection{Bluetooth Low Energy}
+Um die Probleme von Bluetooth bezüglich des Stromverbrauches zu adressieren, wurde 2009 Bluetooth Low Energy, kurz Bluetooth LE, als optionaler Teil des Bluetooth Standard Version 4.0 eingeführt.  
 Ziel von BLE ist es, den Stromverbrauch mittels darauf optimierter Protokolle und anderer Einschränkungen gegenüber Bluetooth zu verringern.
 Die Komplexität wird unter anderem durch die Verringerung der unterstützen Profile erreicht. Klassische Bluetooth Profile wie zum Beispiel HSP (Headset), OBEX (Datei Übertragungen) und FTP (Datei Übertragungen) sind beispielsweise nicht mehr im Standard enthalten.
 Energie wird durch ein neues Kommunikationsprotokoll gespart, bei der die Geräte im Standby(auf Verbindung wartend) mit weniger Energie auskommen.
-Außerdem wird mit Bluetooth 4.0 eine neue Kommunikationsmethode, das Attribut Protokol (ATT) eingeführt, welches von dieses Bluetooth LE verwendet und auf kleine Packetgrößen optimiert ist, was den Protokolloverhead minimiert.
+Die Geräte können über eine Distanz von circa 10 Metern miteinander kommunizieren.
+Mit Bluetooth 4.0 wurde auch eine neue Kommunikationsmethode, das Attribut Protokol (ATT) eingeführt, welches von Bluetooth LE verwendet und auf kleine Packetgrößen optimiert ist. 
+Das minimiert den Protokolloverhead.
 Die unterstützten Profile bauen alle auf GATT auf, welches ATT benutzt um Profile bereitzustellen.
 
 
@@ -234,13 +250,17 @@ Bulk Transfers verwenden CRC zur Fehlererkennung und Korrektur. Es ist garantier
 \cite{usbbulk}
 Nach dem die korrekten Endpunkte gefunden wurde, können sie von dem Accessoir zum senden von Daten verwendet werden.
 
-Auf dem Androidgerät wird daraufhin eine Liste von Applikationen welche die AOA API unterstützen dem Benutzer gezeigt. Der Benutzer kann dann die zum aktuellen Accessoir passende Applikation starten, welche dann Daten austauschen kann. TODO echt?
+Auf dem Androidgerät wird daraufhin eine Liste von Applikationen welche die AOA API unterstützen, dem Benutzer gezeigt. Der Benutzer kann dann die zum aktuellen Accessoir passende Applikation auswählen und das angeschlossene Gerät verwenden.
+\begin{figure}[h]
+\centering
+\def\svgwidth{\columnwidth}
+\input{media/protocols.pdf_tex}
+\end{figure}
 
-
-Erkannt werden kann der Accesory Modus ist, wenn das USB-Interface eine Vendor ID 0x18D1 und eine Produkt ID von 0x2D00 oder 0x2D01 hat. 
+Erkannt wird der Accesory Modus, wenn das USB-Interface die Vendor ID 0x18D1 und die Produkt ID von 0x2D00 oder 0x2D01 besitzt. 
 
 \section{Beispiels AOA Anwendung}
-Da Android OpenAccessory die von Google offiziell unterstütze API für die Anbindung externer Geräte ist, wird hier auf den Aufbau solcher Applikationen detallierter eingegangen.
+Da Android OpenAccessory die von Google offiziell unterstützte API für die Anbindung externer Geräte ist, wird hier auf den Aufbau solcher Applikationen detaillierter eingegangen. Außerdem wird an einer Beispielsapplikation der Aufbau von Systemen, welche auf AOA aufbauen erläutert.
 \subsection{AOA Hardware}
 Um mit AOA eine Anwendung mit Hardwarekomponente entwickeln zu können, braucht man ein kompatibles Hardwareboard.
 Zurzeit können hierfür die von Google als Referenz Plattform bereitgestellten Arduinos, sowie einzelne andere Boards von Drittherstellern, wie zum Beispiel das IOIO Board \cite{ioio}, das AOAA Kit von Embedded Artists\cite{aoaa},  TODO mehr Beispiele , oder man entwickelt die Elektronik basierend auf der Dokumentation des Protokolls selbst\cite{aoaprotocol2}.
@@ -257,7 +277,7 @@ Als Mikrocontroller kommt ein PIC24F zum Einsatz, welcher auf Grund seiner viele
 Das Board besitzt 48 Pins, welche als Digitale Inputs und Outputs angesteuert werden können. 16 dieser Pins können auch als analoge Inputs verwendet werden.
 Zusätzlich können 9 PWM (Pulsweitenmodulation) Ausgänge verwendet werden.
 Für die Kommunikation mit anderen Elektronischen Geräten stehen 4 UART Kanäle, 3 SPI Kanäle und 3 TWI Kanäle, welche mit I\textsuperscript{2}C kompatibel sind zur Verfügung.
-Der Strom wird über ein externes 5V Volt Netzteil bereitgestellt, welches bis zu 1.5 Ampere liefern muss.
+Der Strom wird über ein externes 5 Volt Netzteil bereitgestellt, welches bis zu 1.5 Ampere liefern muss.
 
 Die externe Stromversorgung ist praktisch, da sowohl das Androidgerät geladen werden kann, als auch Motoren oder ähnliches durch das Netzteil mitversorgt werden können.
 Ziel der Neuentwicklung war vor allem eine kostengünstige Möglichkeit zum Einstieg in die Hardware Entwicklung mit Android verfügbar zu machen.
@@ -274,8 +294,47 @@ Dadurch können auch Anwendungen, welche den Mikrocontroller vom PC aus verwende
 Außerdem konnten die Produktionskosten weiter gesenkt werden, die neue Version ist nun bei den Partnerunternehmen des Projektes für ca. 30\textdollar{} erhältlich.
 
 \subsection{Vorhaben}
+Mit dem IOIO Board soll eine einfaches Projekt durchgeführt werden, welches Android Geräte an externe Peripherie anbindet.
+Das Ziel ist es eine Android App zu entwickeln, welche es ermöglicht einen Atari 2600 zu steuern.
+\subsubsection{Atari 2600}
+Das Atari Video Computer System (Atari VCS), kurz Atari 2600 ist ein ab 1977 vetriebene Spielekonsole. 
+Es war eine der ersten Spielekonsolen, und bis heute mit etwa 30 Millionen verkauften Exemplaren die am meist verkaufte.
+Die Hardware ist für heutige Verhältnisse sehr beschränkt. 
+So beihaltet die Konsole 128 Byte RAM und einen Prozessor 1,19 MHz Taktfrequenz.
+Mit Hilfe von einsteckbaren Modulen können beliebige Spiele ausgeführt werden, von denen etwa 1200 hergestellt wurden.
+Angeschlossen wird das System an einen Fernseher, auf dem bis zu 128 verschiedene Farben dargestellt werden.
+Es sind zwei Anschlüsse für Controller vorhanden. Von Atari wurden sowohl Standard Joysticks als auch speziellere Eingabegeräte wie Paddles verkauft.
+
+Die Joysticks werden über 9-polige D-Sub Stecker angeschlossen.
+eDabei werden bei einem Joystick 5 der Pole für die Verschiedenen Richtungen und den Button verwendet.
+Sie funktionieren wie einfache Schalter, von denen maximal drei gedrückt werden können, z.B. 'rechts' + 'oben' + 'Knopf'.
+Dabei werden die Pins beim drücken des Joysticks in eine Richtung, von 5 Volt auf 0 Volt heruntergesetzt. 
+Dies wird vom Atari als Input erkannt.
+Das Ziel ist es also eine Anwendung zu schreiben, mit der von einem Android Handy aus die Spannung an den Input-pins manipuliert werden kann.
 
 \subsection{Umsetzung}
+Das IOIO Board wird teilweise ohne funkionsfähige Firmware ausgeliefert. Falls dies der Fall ist, kann man die Firmware von der Github Seite des Projekts beziehen TODO und selbst die Software auf die Hardware flashen.
+
+Um ein solches Hardwareprojekt einfach und schnell umsetzen zu können, sollte man die Komplexität am Anfang beschränken, damit die Fehlersuche vereinfacht wird.
+Als einfaches Einstieg, um die Funktionalität des IOIO Board zu überprüfen, bietet es sich an eine LED zu installieren, welche von der Android Applikation angeschaltet wird.
+
+Um die Pins von 5 Volt auf 0 Volt zu bekommen werden fünf der IOIO Digitalausgänge mit den Eingängen eines Transistorarray vom Typ ULN2003A verbunden.
+
+\begin{figure}[h]
+%\centering
+\def\svgwidth{\columnwidth}
+\input{media/circuit.pdf_tex}
+\caption{Schaltplan für IOIO Atari Controller}
+\end{figure}
+
+
+
+
+Das IOIO Projekt bietet Code Bibliotheken an, welche es ermöglichen das Board mittels Android anzusteuern.
+Außerdem gibt es auch eine Desktop Java Bibliothek, die es erlaubt den IOIO von einem PC aus anzusteuern.
+Zum entwickeln der Hardwareseitigen Funktionalität bietet es sich daher an, erst auf einem PC zu testen und danach den Code in der Android App zu verwenden.
+Die API zur Kommandoübermittlung zum IOIO Board ist recht einfach gehalten.
+
 
 \subsection{Erkenntnisse}
 
@@ -284,6 +343,8 @@ Außerdem konnten die Produktionskosten weiter gesenkt werden, die neue Version 
 
 
 \section{Ausblick}
+Da es für neue Projekte oft wichtig sein kann, dass sie auch in der Zukunft funktionieren, muss vor der Systemkonzeption auch auf die Entwicklung der verwendeten Technologie eingegangen werden.
+Nachfolgend wird kurz auf bereits absehbare, voraussichtliche Entwicklungen der verschiedenen Anbindungsmöglichkeiten eingegangen. 
 \subsection{AOA}
 
 \subsection{Bluetooth}
@@ -291,7 +352,7 @@ Außerdem konnten die Produktionskosten weiter gesenkt werden, die neue Version 
 \subsection{NFC}
 
 \subsection{USB}
-In der Android Version L, die voraussichtlich im Herbst 2014 erscheinen wird, wird USB audio-out unterstützen. Mit USB Audio-out lässt sich gegenüber den Audioklinkenbuchsen der Smartphone interne Digital-Analog-Umsetzer umgehen, was für Soundtechnikern ermöglicht bessere, externe DAUs zu verwenden.
+In der Android Version L, welche im Herbst 2014 veröffentlicht wurde, unterstützt USB audio-out. Mit USB Audio-out lässt sich gegenüber den Audioklinkenbuchsen der Smartphone interne Digital-Analog-Umsetzer umgehen, was für Soundtechnikern ermöglicht bessere, externe DAUs zu verwenden.
 Damit kann Musik produziert, Mischpulte gesteuert und USB Kopfhörer verwendet werden.
 Damit zieht Google mit Apple gleich, welche die Technik schon seit 
 Das ermöglicht das Verwenden von USB Geräten  
