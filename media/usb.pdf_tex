@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.48.5, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'protocols.pdf' (pdf, eps, ps)
+%% Accompanies image file 'usb.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{587.1bp}%
+    \setlength{\unitlength}{711.45bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,16 +48,7 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.81506558)%
-    \put(0,0){\includegraphics[width=\unitlength]{media/protocols.pdf}}%
-    \put(0.06042412,0.13383855){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Bluetooth}}}%
-    \put(0.15506456,0.03654682){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Hardware Protokoll Layer}}}%
-    \put(0.75516365,0.1321012){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{USB}}}%
-    \put(0.4312265,0.55589621){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{IOIO}}}%
-    \put(0.45450352,0.33783782){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{ADB}}}%
-    \put(0.78897684,0.34147157){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{AOA}}}%
-    \put(0.34168771,0.24437913){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Transport Protokoll Layer}}}%
-    \put(0.09658616,0.33652488){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{UART}}}%
-    \put(0.1119364,0.45735573){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Anwendungs Protokoll Layer}}}%
+  \begin{picture}(1,0.78234591)%
+    \put(0,0){\includegraphics[width=\unitlength]{media/usb.pdf}}%
   \end{picture}%
 \endgroup%
